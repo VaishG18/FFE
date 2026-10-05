@@ -72,43 +72,7 @@ export default function Ecosystem() {
           </p>
         </div>
 
-        <div className="mt-[33px] flex flex-col items-center md:mt-10 lg:mt-[54px] lg:flex-row lg:items-stretch">
-          {PILLARS.map((p, idx) => (
-            <Fragment key={p.title}>
-              {idx > 0 && (
-                <div className="flex h-[71px] items-center justify-center md:h-[55px] lg:h-auto lg:w-[55px] lg:shrink-0 lg:items-start lg:pt-[198px]" aria-hidden>
-                  <Image src={flowArrow} alt="" sizes="31px" className="size-[31px] rotate-90 lg:rotate-0" />
-                </div>
-              )}
-              {/* Mobile cards (428:647 etc.) are the desktop card at exactly ×0.903. */}
-              <div
-                className="w-full max-w-[392px] [zoom:0.903] md:[zoom:1] lg:w-[392px] lg:max-w-none lg:shrink"
-                data-reveal
-                style={{ "--i": idx } as CSSProperties}
-              >
-                <article className="lift group h-full min-h-[410px] overflow-hidden rounded-[25px] bg-white md:min-h-[426px]">
-                  <div className="relative aspect-[392/171] overflow-hidden">
-                    <Image src={p.img} alt={p.alt} placeholder="blur" sizes="(min-width: 1024px) 405px, 100vw" style={p.crop} className="zoom" />
-                  </div>
-                  <div className="relative px-[27px] pb-[13px] md:pb-[32px]">
-                    <Image src={ring} alt="" className="absolute top-[-31px] left-[23px]" />
-                    <Image src={p.icon} alt="" sizes="34px" className="absolute top-[-16.61px] left-[41.39px] size-[33.21px]" />
-                    <h3 className="pt-[57px] font-display text-[26px] leading-[1.2] font-semibold text-accent">{p.title}</h3>
-                    <p className="mt-[17px] max-w-[332px] text-[15px] leading-[23px] font-medium text-black">{p.desc}</p>
-                    <ul className="mt-[22px] text-[15px] leading-[normal] font-medium text-black">
-                      {p.items.map((it) => (
-                        <li key={it} className="flex items-center gap-[5px]">
-                          <Image src={check} alt="" className="shrink-0" />
-                          {it}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </div>
-            </Fragment>
-          ))}
-        </div>
+        <PillarRow className="mt-[33px] md:mt-10 lg:mt-[54px]" />
 
         <div className="mt-[44px] flex justify-center md:mt-10 lg:mt-[42px]" data-reveal>
           <Button
@@ -126,5 +90,48 @@ export default function Ecosystem() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** The three pillar cards with flow arrows (also used on the About page, scaled). */
+export function PillarRow({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex flex-col items-center lg:flex-row lg:items-stretch ${className}`}>
+      {PILLARS.map((p, idx) => (
+        <Fragment key={p.title}>
+          {idx > 0 && (
+            <div className="flex h-[71px] items-center justify-center md:h-[55px] lg:h-auto lg:w-[55px] lg:shrink-0 lg:items-start lg:pt-[198px]" aria-hidden>
+              <Image src={flowArrow} alt="" sizes="31px" className="size-[31px] rotate-90 lg:rotate-0" />
+            </div>
+          )}
+          {/* Mobile cards (428:647 etc.) are the desktop card at exactly ×0.903. */}
+          <div
+            className="w-full max-w-[392px] [zoom:0.903] md:[zoom:1] lg:w-[392px] lg:max-w-none lg:shrink"
+            data-reveal
+            style={{ "--i": idx } as CSSProperties}
+          >
+            <article className="lift group h-full min-h-[410px] overflow-hidden rounded-[25px] bg-white md:min-h-[426px]">
+              <div className="relative aspect-[392/171] overflow-hidden">
+                <Image src={p.img} alt={p.alt} placeholder="blur" sizes="(min-width: 1024px) 405px, 100vw" style={p.crop} className="zoom" />
+              </div>
+              <div className="relative px-[27px] pb-[13px] md:pb-[32px]">
+                <Image src={ring} alt="" className="absolute top-[-31px] left-[23px]" />
+                <Image src={p.icon} alt="" sizes="34px" className="absolute top-[-16.61px] left-[41.39px] size-[33.21px]" />
+                <h3 className="pt-[57px] font-display text-[26px] leading-[1.2] font-semibold text-accent">{p.title}</h3>
+                <p className="mt-[17px] max-w-[332px] text-[15px] leading-[23px] font-medium text-black">{p.desc}</p>
+                <ul className="mt-[22px] text-[15px] leading-[normal] font-medium text-black">
+                  {p.items.map((it) => (
+                    <li key={it} className="flex items-center gap-[5px]">
+                      <Image src={check} alt="" className="shrink-0" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          </div>
+        </Fragment>
+      ))}
+    </div>
   );
 }

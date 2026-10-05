@@ -40,7 +40,7 @@
 
 @media (min-width: 1024px) {
   :root {
-    --header-h: 120px;
+    --header-h: 117px;
   }
 }
 
@@ -70,6 +70,18 @@ body {
 @utility container-wide {
   width: min(1395px, 100% - 2 * var(--gutter-wide));
   margin-inline: auto;
+}
+
+/* About page frames use 80px side margins (1280px content). */
+@utility container-narrow {
+  width: min(1280px, 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+/* Auto-layout frames (About page) use real line heights, not cap trimming;
+   anything Figma does trim is marked .trim. */
+.untrim :is(h1, h2, h3, p, li, label):not(.trim) {
+  text-box: normal;
 }
 
 /* ── Type scale ─────────────────────────────────────────────────────────── */
@@ -250,15 +262,117 @@ body {
   .checkbox:user-invalid {
     border-color: #d93025;
   }
-  /* Larger tap area for text links without moving them. */
+  /* Larger tap area for text links without moving them (inline padding doesn't
+     affect layout, and stays correct when a link wraps onto several lines). */
   .footer-link {
-    display: inline-block;
     padding-block: 10px;
-    margin-block: -10px;
   }
   .field input::placeholder {
     color: var(--color-field);
     opacity: 1;
+  }
+
+  /* Design-system pill (<Pill>): 52px, 28px sides, "›" glyph. Wraps on phones. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-box: normal;
+    transition:
+      transform var(--dur-ui) var(--ease-out),
+      box-shadow var(--dur-ui) var(--ease-out),
+      background-color var(--dur-ui) var(--ease-out),
+      color var(--dur-ui) var(--ease-out);
+  }
+  @media (min-width: 768px) {
+    .pill {
+      height: 52px;
+      padding: 0 28px;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+  }
+  .pill:focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+  }
+  .pill-chev {
+    display: inline-block;
+    transition: transform var(--dur-ui) var(--ease-out);
+  }
+
+  /* About page form inputs (Figma 736:2570): 46px, 12px radius. */
+  .input {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    width: 100%;
+    border: 1px solid var(--color-field);
+    border-radius: 12px;
+    background: #fff;
+    padding-inline: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 23px;
+    color: #000;
+    transition:
+      border-color var(--dur-ui) var(--ease-out),
+      box-shadow var(--dur-ui) var(--ease-out);
+  }
+  .input::placeholder {
+    color: var(--color-field);
+    opacity: 1;
+  }
+  .input:focus-within,
+  .input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgb(40 174 61 / 0.15);
+  }
+  .input:user-invalid,
+  .input:has(:user-invalid) {
+    border-color: #d93025;
+    box-shadow: 0 0 0 4px rgb(217 48 37 / 0.12);
+  }
+
+  /* Programme modals (native <dialog>). */
+  .modal {
+    padding: 0;
+    border: 0;
+  }
+  .modal::backdrop {
+    background: rgb(3 41 26 / 0.45);
+    backdrop-filter: blur(2px);
+  }
+  html:has(.modal[open]) {
+    overflow: hidden;
+  }
+
+  /* "Why different" points (736:2232 rest, 736:2666 hover): on desktop with a
+     mouse the descriptions stay folded until the row is hovered. Touch and
+     narrow screens always show them. */
+  @media (hover: hover) and (min-width: 1024px) {
+    .points .pt-desc {
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows var(--dur-reveal) var(--ease-out),
+        opacity var(--dur-reveal) var(--ease-out);
+    }
+    .points:hover .pt-desc,
+    .points:focus-within .pt-desc {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
   }
 }
 
@@ -272,6 +386,12 @@ body {
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.98);
   }
 }
 
@@ -315,6 +435,19 @@ body {
     .btn:hover .chev {
       transform: translateX(3px);
     }
+    .pill:hover {
+      transform: translateY(var(--lift));
+      box-shadow: 0 10px 24px -10px rgb(2 93 3 / 0.45);
+    }
+    .pill:hover .pill-chev {
+      transform: translateX(3px);
+    }
+    .points li .pt-icon {
+      transition: transform var(--dur-ui) var(--ease-out);
+    }
+    .points li:hover .pt-icon {
+      transform: translateY(var(--lift));
+    }
     .nav-link:hover::after {
       transform: scaleX(1);
     }
@@ -340,7 +473,8 @@ body {
       color: var(--color-accent);
     }
   }
-  .btn:active {
+  .btn:active,
+  .pill:active {
     transform: translateY(0);
     transition-duration: 80ms;
   }
@@ -350,6 +484,14 @@ body {
   }
 
   .fade-in {
+    animation: fade-in var(--dur-ui) var(--ease-out) both;
+  }
+
+  /* Programme modals: content rises in; backdrop fades. */
+  .modal[open] .modal-body {
+    animation: modal-in 320ms var(--ease-out) both;
+  }
+  .modal[open]::backdrop {
     animation: fade-in var(--dur-ui) var(--ease-out) both;
   }
 

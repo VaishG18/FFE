@@ -83,9 +83,9 @@ export function Button({ href, children, chevron, w, h, pl, gap, fs = 18, classN
 }
 
 /** Date + venue block with the white rule (hero + join banner). */
-export function DateVenue({ className = "", style }: { className?: string; style?: CSSProperties }) {
+export function DateVenue({ className = "", style, date = "17-18 Nov. 2027" }: { className?: string; style?: CSSProperties; date?: string }) {
   const rows = [
-    { icon: calendar, text: "17-18 Nov. 2027" },
+    { icon: calendar, text: date },
     { icon: location, text: "Sands Expo & Convention Centre, Singapore" },
   ];
   return (
@@ -115,3 +115,51 @@ export const crop = (w: number, h: number, l: number, t: number): CSSProperties 
   top: `${t}%`,
   maxWidth: "none",
 });
+
+/** Design-system pill (Figma "Button" component 445:27xx): auto width, text "›" glyph. */
+export function Pill({ href, children, className }: { href?: string; children: ReactNode; className: string }) {
+  // Chevron sits inside the label so it follows the last word when the label wraps on phones.
+  const inner = (
+    <span>
+      {children}
+      {/* Word joiner: never wrap the chevron onto its own line. */}
+      {"\u2060"}
+      <span aria-hidden className="pill-chev ml-[10px]">
+        ›
+      </span>
+    </span>
+  );
+  return href ? (
+    <a href={href} className={`pill ${className}`}>
+      {inner}
+    </a>
+  ) : (
+    <button type="submit" className={`pill ${className}`}>
+      {inner}
+    </button>
+  );
+}
+
+/** Absolute box in % of a W×H Figma frame, so decorative collages scale with their container. */
+export const box = (W: number, H: number, l: number, t: number, w: number, h: number): CSSProperties => ({
+  position: "absolute",
+  left: `${(l / W) * 100}%`,
+  top: `${(t / H) * 100}%`,
+  width: `${(w / W) * 100}%`,
+  height: `${(h / H) * 100}%`,
+});
+
+export const COUNTRIES = ["Singapore", "Australia", "China", "Hong Kong", "India", "Indonesia", "Japan", "Malaysia", "New Zealand", "Philippines", "South Korea", "Thailand", "Vietnam", "Other"];
+
+/** Form field: 14px label (red * when required) above its control. Figma gap is 7 (About) or 8 (Contact). */
+export function FormField({ label, required, gap, className = "", children }: { label: string; required?: boolean; gap: number; className?: string; children: ReactNode }) {
+  return (
+    <label className={`flex min-w-0 flex-col ${className}`} style={{ gap }}>
+      <span className="text-[14px] leading-[18px] font-medium text-black">
+        {label}
+        {required && <span className="text-[#e4051f]"> *</span>}
+      </span>
+      {children}
+    </label>
+  );
+}

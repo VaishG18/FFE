@@ -1,19 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import plus from "@/assets/icon-plus.png";
 
-// Column left padding after the divider follows Figma (359:559–359:562).
+// Figma 736:1519. `w` = desktop column width (flex-grow ratio; 0 = sized to content),
+// `max` = Figma text box width where links wrap, `gap` = phone bar→title gap.
 const COLS = [
-  { title: "About", pl: "", gap: 7, links: ["Overview", "Our Story", "Strategic Vision", "Fresh Food Ecosystem", "Organiser"] },
-  { title: "Exhibit", pl: "lg:pl-4 xl:pl-[24px]", gap: 8, links: ["Why Exhibit", "Who Should Exhibit", "Exhibitor Information", "Apply to Exhibit"] },
-  { title: "Visit", pl: "lg:pl-4 xl:pl-[21px]", gap: 6, links: ["Why Visit", "Who Should Visit", "Visitor Information", "Register to Visit"] },
-  { title: "Contact", pl: "lg:pl-4 xl:pl-[18px]", gap: 5, links: ["Contact Us", "Media & Press", "General Enquiries"] },
+  { title: "About", w: 225, max: 178, gap: 7, links: ["Overview", "Our Story", "Fresh Food Ecosystem", "SIAW", "Supporting Organisations & Media Partners", "Contact Us"] },
+  { title: "Exhibit", w: 230, max: 190, gap: 8, links: ["Why Exhibit", "Who Should Exhibit", "Exhibitor Profile", "Sponsorship & Branding Opportunities", "Apply to Exhibit"] },
+  { title: "Visit", w: 185, gap: 6, links: ["Why Visit", "Who Should Visit", "Plan Your Visit", "Register to Visit"] },
+  { title: "Programme", w: 236, gap: 7, links: ["Conference Programme", "Speakers", "Site Visits", "Hosted Buyers"] },
+  { title: "News & Media", w: 0, gap: 5, links: ["News & Press Release", "FAQs", "Subscribe Newsletter"] },
 ];
 
-// Row paddings between the Figma rules 318:2065–318:2069 (first row is shorter).
-const ROW = ["pt-[11.5px] pb-[15px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[17px]"];
+// Phone row paddings between the accordion rules (first row is shorter).
+const ROW = ["pt-[11.5px] pb-[15px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[17px]"];
 
 const PHONE = "(max-width: 767.98px)";
 
@@ -35,7 +37,7 @@ export default function FooterNav() {
   return (
     <nav
       aria-label="Footer"
-      className="mt-[27.5px] ml-[3px] border-b border-black/30 md:mt-0 md:ml-0 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-10 md:border-0 lg:flex lg:flex-1 lg:gap-0"
+      className="mt-[27.5px] ml-[3px] border-b border-black/30 md:mt-0 md:ml-0 md:grid md:grid-cols-3 md:gap-x-6 md:gap-y-10 md:border-0 lg:flex lg:flex-1 lg:gap-0"
     >
       {COLS.map((c, i) => (
         <details
@@ -44,15 +46,14 @@ export default function FooterNav() {
           ref={(el) => {
             refs.current[i] = el;
           }}
-          className={`group border-t border-black/30 md:border-0 lg:h-[250px] ${i ? "lg:border-l lg:border-black/50" : ""} lg:flex-1 ${
-            i === 3 ? "" : i === 0 ? "xl:w-[219px] xl:flex-none" : "xl:w-[249px] xl:flex-none"
-          } ${c.pl}`}
+          style={{ flexGrow: c.w, "--gap": `${c.gap}px`, "--pl": `${3 + c.gap}px`, "--max": c.max ? `${c.max}px` : "none" } as CSSProperties}
+          className={`group border-t border-black/30 md:border-0 lg:min-h-[322px] lg:border-l lg:border-black/20 lg:pl-4 xl:pl-5 ${c.w ? "lg:basis-0" : "lg:flex-none"}`}
         >
           <summary
             onClick={(e) => !window.matchMedia(PHONE).matches && e.preventDefault()}
             className={`flex cursor-pointer list-none items-center justify-between pr-[11px] md:cursor-default md:p-0 [&::-webkit-details-marker]:hidden ${ROW[i]}`}
           >
-            <span className="flex items-center" style={{ gap: c.gap }}>
+            <span className="flex items-center gap-(--gap) md:gap-[9px]">
               <span className="h-[33px] w-[3px] shrink-0 bg-accent" aria-hidden />
               <h3 className="text-[20px] leading-[normal] font-semibold text-black md:text-[25px]">{c.title}</h3>
             </span>
@@ -63,7 +64,7 @@ export default function FooterNav() {
               className="size-[30px] transition-transform duration-(--dur-ui) ease-(--ease-out) group-open:rotate-45 md:hidden"
             />
           </summary>
-          <ul className="acc-body text-lead flex flex-col gap-[25.8px] pb-[20px] md:mt-[17px] md:pb-0" style={{ paddingLeft: 3 + c.gap }}>
+          <ul className={`acc-body text-lead flex flex-col gap-[25px] pb-[20px] pl-(--pl) md:mt-[25px] md:max-w-(--max) md:pb-0 md:pl-0 ${c.w ? "" : "lg:whitespace-nowrap"}`}>
             {c.links.map((l) => (
               <li key={l}>
                 <a href="#" className="footer-link">
