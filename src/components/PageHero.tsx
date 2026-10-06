@@ -1,6 +1,8 @@
 import Image, { type StaticImageData } from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 import heroCurve from "@/assets/about/hero-curve.png";
+import ecoCurve from "@/assets/ecosystem/hero-curve.svg";
+import exhibitCurve from "@/assets/exhibit/hero-curve.svg";
 import chevronSmBrand from "@/assets/chevron-sm-brand.svg";
 import chevronSmWhite from "@/assets/chevron-sm-white.svg";
 import { Button, DateVenue, crop } from "./ui";
@@ -8,7 +10,8 @@ import { Button, DateVenue, crop } from "./ui";
 const i = (n: number) => ({ "--i": n }) as CSSProperties;
 
 type Props = {
-  eyebrow: string;
+  /** Omitted on Our Story (title only). */
+  eyebrow?: string;
   title: ReactNode;
   children: ReactNode;
   img: StaticImageData;
@@ -20,24 +23,104 @@ type Props = {
   curveLeft?: number;
   /** "Stay Connected" target; omit to render no CTAs (Subscribe). */
   stayHref?: string;
+  /** Replaces the three CTAs with a single custom one (SIAW). */
+  cta?: ReactNode;
   /**
    * "compact" = News 736:3042: 426px panel, content at (67, 77), wider gaps, 195×165 curve.
    * "tall" = Subscribe 736:3301: two-line title, content at (69.5, 55), 194.6×165.4 curve.
+   * "siaw" = SIAW 624:1751: 516px panel, content at (73.5, 88), one 596px fade, 18/23 copy.
+   * "eco" = Ecosystem 674:2726: 351px panel, content at (56, 64.37), 676/496px fades, 18/25 semibold copy, vector curve.
+   * "story" = Our Story 786:3140: 342px panel, no eyebrow, title cap top 59, 1016/538px fades, eco copy + curve.
+   * "exhibit" = Why Exhibit 786:3081: 380px panel, no eyebrow, 18/26 copy, date block + CTAs passed in `cta`.
+   * "who" = Who Should Exhibit 786:3189: 316px panel, no eyebrow, 15/23 copy, exhibit curve.
    */
-  size?: "default" | "compact" | "tall";
+  size?: "default" | "compact" | "tall" | "siaw" | "eco" | "story" | "exhibit" | "who";
 };
 
-const SIZES = {
+type Size = { panel: string; curve: string; content: string; desc: string; date: string; ctas: string; title?: string; descType?: string; fades?: string[]; curveSrc?: StaticImageData };
+
+const DESC_TYPE = "max-w-[535px] text-[17px] leading-[normal] tracking-[0.02em] md:mt-[22px] md:text-[22px] md:leading-[31px]";
+// Two 538px fades over the photo's left edge.
+const FADES = ["left-[16.7%] w-[38.57%]", "left-[36.63%] w-[38.57%]"];
+
+const SIZES: Record<NonNullable<Props["size"]>, Size> = {
   default: { panel: "lg:h-[501px]", curve: "bottom-0 h-[181px] w-[213px]", content: "lg:pt-[80px] lg:pl-[6.5px]", desc: "lg:mt-[31px]", date: "md:mt-[28px]", ctas: "md:mt-[34px]" },
   compact: { panel: "lg:h-[426px]", curve: "bottom-[5px] h-[165px] w-[195px]", content: "lg:pt-[77px] lg:pl-[12.5px]", desc: "lg:mt-[39px]", date: "md:mt-[28px]", ctas: "md:mt-[34px] lg:mt-[39.6px]" },
   tall: { panel: "lg:h-[501px]", curve: "bottom-0 h-[165.352px] w-[194.586px]", content: "lg:pt-[55px] lg:pl-[15px]", desc: "lg:mt-[28px]", date: "md:mt-[28px] lg:mt-[34.6px]", ctas: "" },
+  // Copy is an untrimmed auto-layout text (top 248.94, 4×23px); CTA top 369.65.
+  siaw: {
+    panel: "lg:h-[516px]",
+    curve: "bottom-[0.88px] h-[167.809px] w-[197.477px]",
+    content: "lg:pt-[88px] lg:pl-[19px]",
+    title: "lg:mt-[31.93px]",
+    descType: "max-w-[694px] text-[17px] leading-[22px] [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[23px]",
+    // Browser trims the Fredoka title to 88px (Figma 90.63), so the gap absorbs the 2.8px to land at y 248.94.
+    desc: "lg:mt-[30.88px]",
+    date: "",
+    ctas: "md:mt-[28.71px]",
+    fades: ["left-[34.16%] w-[42.72%]"],
+  },
+  // Title (one line) cap top 105.37, copy (untrimmed, 2×25px) 166.37 and 4px right of the title, CTAs 246.37.
+  eco: {
+    panel: "lg:h-[351px]",
+    // Group 1000015919: 230.62×184.32 at (−20.98, 171), runs 4.3px past the panel's bottom edge.
+    curve: "top-[171px] h-[184.316px] w-[230.623px]",
+    curveSrc: ecoCurve,
+    content: "lg:pt-[64.37px] lg:pl-[1.52px]",
+    title: "lg:mt-[30.86px]",
+    descType: "max-w-[625px] text-[17px] leading-[23px] font-semibold [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
+    desc: "lg:mt-[26px]",
+    date: "",
+    ctas: "md:mt-[30px]",
+    fades: ["left-[16.35%] w-[48.46%]", "left-[16.35%] w-[35.56%]"],
+  },
+  // Title (no eyebrow) cap top 59 at x 55.01; copy (4×25px) top 118, 4px further right; CTAs 246.
+  story: {
+    panel: "lg:h-[342px]",
+    curve: "top-[161px] h-[184.316px] w-[230.623px]",
+    curveSrc: ecoCurve,
+    content: "lg:pt-[59px] lg:pl-[0.51px]",
+    title: "mt-0!",
+    descType: "max-w-[625px] text-[17px] leading-[23px] font-semibold [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
+    desc: "lg:mt-[24px]",
+    date: "",
+    ctas: "md:mt-[28px]",
+    fades: ["left-[16.35%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
+  // Title cap top 59 at x 55.49; copy (2×26px) top 117; date block 191 (via `cta`, followed by the CTAs at 286).
+  exhibit: {
+    panel: "lg:h-[380px]",
+    // Group 1000015919: 196.84×157.32 at (4.37, 212).
+    curve: "top-[212px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:pt-[59px] lg:pl-[0.99px]",
+    title: "mt-0!",
+    descType: "max-w-[620px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[26px] lg:ml-[4px]",
+    desc: "lg:mt-[23px]",
+    date: "",
+    ctas: "md:mt-[22px]",
+    fades: ["left-[16.42%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
+  // Title cap top 59 at x 54.49; copy (3×23px) top 121, 4px right; CTAs 215. Curve at (3.38, 161).
+  who: {
+    panel: "lg:h-[316px]",
+    curve: "top-[161px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:pt-[59px]",
+    title: "mt-0!",
+    descType: "max-w-[555px] text-[15px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] lg:ml-[4px]",
+    desc: "lg:mt-[27px]",
+    date: "",
+    ctas: "md:mt-[25px]",
+    fades: ["left-[16.34%] w-[72.83%]", "left-[16.27%] w-[38.57%]"],
+  },
 };
 
 /**
  * Inner-page hero: 1395×501 brand panel, photo on the right, two 538px fades, three CTAs.
  * Figma 736:2149 (About), 736:2710 (Contact).
  */
-export default function PageHero({ eyebrow, title, children, img, imgBox, date, curveLeft = 0, stayHref, size = "default" }: Props) {
+export default function PageHero({ eyebrow, title, children, img, imgBox, date, curveLeft = 0, stayHref, cta, size = "default" }: Props) {
   const z = SIZES[size];
   return (
     <section id="top" className="container-wide relative mt-[10px] md:mt-0">
@@ -55,47 +138,58 @@ export default function PageHero({ eyebrow, title, children, img, imgBox, date, 
         </div>
         {/* Below lg: brand green over the photo so white copy stays readable. */}
         <div className="absolute inset-0 bg-linear-to-b from-brand from-35% via-brand/85 to-brand/65 lg:hidden" />
-        {/* Desktop: two 538px fades over the photo's left edge. */}
-        <div className="absolute inset-y-0 left-[16.7%] hidden w-[38.57%] bg-linear-to-l from-brand/0 to-brand lg:block" />
-        <div className="absolute inset-y-0 left-[36.63%] hidden w-[38.57%] bg-linear-to-l from-brand/0 to-brand lg:block" />
+        {/* Desktop: brand fades over the photo's left edge. */}
+        {(z.fades ?? FADES).map((f) => (
+          <div key={f} className={`absolute inset-y-0 hidden bg-linear-to-l from-brand/0 to-brand lg:block ${f}`} />
+        ))}
         {/* image 78: 213×181 slot, Figma fill crop. */}
         <span className={`pointer-events-none absolute hidden overflow-hidden lg:block ${z.curve}`} style={{ left: curveLeft }} aria-hidden>
-          <Image src={heroCurve} alt="" sizes="231px" style={crop(108.45, 101.93, -8.45, 0)} />
+          {z.curveSrc ? <Image src={z.curveSrc} alt="" className="max-w-none" /> : <Image src={heroCurve} alt="" sizes="231px" style={crop(108.45, 101.93, -8.45, 0)} />}
         </span>
 
         <div className={`container-page relative pt-[48px] pb-[56px] text-white md:pt-12 md:pb-16 lg:pb-0 ${z.content}`}>
-          <p className="eyebrow load-in" style={i(0)}>
-            {eyebrow}
-          </p>
+          {eyebrow && (
+            <p className="eyebrow load-in" style={i(0)}>
+              {eyebrow}
+            </p>
+          )}
           <h1
-            className="load-in mt-[22px] font-display text-[30px] leading-[35px] font-semibold tracking-[0.02em] uppercase md:text-[44px] md:leading-[1.08] lg:mt-[31px] lg:text-[50px] lg:leading-[53px]"
+            className={`load-in mt-[22px] font-display text-[30px] leading-[35px] font-semibold tracking-[0.02em] uppercase md:text-[44px] md:leading-[1.08] lg:text-[50px] lg:leading-[53px] ${z.title ?? "lg:mt-[31px]"}`}
             style={i(1)}
           >
             {title}
           </h1>
-          <p
-            className={`load-in mt-[23px] max-w-[535px] text-[17px] leading-[normal] tracking-[0.02em] md:mt-[22px] md:text-[22px] md:leading-[31px] ${z.desc}`}
-            style={i(2)}
-          >
+          <p className={`load-in mt-[23px] ${z.descType ?? DESC_TYPE} ${z.desc}`} style={i(2)}>
             {children}
           </p>
           {date && <DateVenue date={date} className={`load-in mt-[22px] ${z.date}`} style={i(3)} />}
 
-          {stayHref && (
-            <div className={`load-in mt-[24px] flex flex-col items-start gap-[11px] md:flex-row md:flex-wrap md:gap-[13px] ${z.ctas}`} style={i(4)}>
-              <Button href="/#be-involved" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
-                Register to Visit
-              </Button>
-              <Button href="/#be-involved" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
-                Apply To Exhibit
-              </Button>
-              <Button href={stayHref} chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
-                Stay Connected
-              </Button>
+          {cta ? (
+            <div className={`load-in mt-[24px] ${z.ctas}`} style={i(4)}>
+              {cta}
             </div>
+          ) : (
+            stayHref && <HeroCtas stayHref={stayHref} className={`load-in mt-[24px] ${z.ctas}`} style={i(4)} />
           )}
         </div>
       </div>
     </section>
+  );
+}
+
+/** Register / Apply / Stay Connected: white 160/162/162×40 pills (hero, SIAW join banner). */
+export function HeroCtas({ stayHref, className = "", style }: { stayHref: string; className?: string; style?: CSSProperties }) {
+  return (
+    <div className={`flex flex-col items-start gap-[11px] md:flex-row md:flex-wrap md:gap-[13px] ${className}`} style={style}>
+      <Button href="/#be-involved" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
+        Register to Visit
+      </Button>
+      <Button href="/#be-involved" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
+        Apply To Exhibit
+      </Button>
+      <Button href={stayHref} chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
+        Stay Connected
+      </Button>
+    </div>
   );
 }

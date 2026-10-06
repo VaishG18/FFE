@@ -14,6 +14,22 @@ const COLS = [
   { title: "News & Media", w: 0, gap: 5, links: ["News & Press Release", "FAQs", "Subscribe Newsletter"] },
 ];
 
+// Built pages; everything else stays "#" until its page exists. Exhibit/Visit CTAs go where the header's do.
+const HREF: Record<string, string> = {
+  Overview: "/about",
+  "Our Story": "/our-story",
+  "Fresh Food Ecosystem": "/ecosystem",
+  SIAW: "/siaw",
+  "Contact Us": "/contact",
+  "Why Exhibit": "/why-exhibit",
+  "Who Should Exhibit": "/who-should-exhibit",
+  "Apply to Exhibit": "/#be-involved",
+  "Register to Visit": "/#be-involved",
+  "Conference Programme": "/programme",
+  "News & Press Release": "/news",
+  "Subscribe Newsletter": "/subscribe",
+};
+
 // Phone row paddings between the accordion rules (first row is shorter).
 const ROW = ["pt-[11.5px] pb-[15px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[17px]"];
 
@@ -67,7 +83,7 @@ export default function FooterNav() {
           <ul className={`acc-body text-lead flex flex-col gap-[25px] pb-[20px] pl-(--pl) md:mt-[25px] md:max-w-(--max) md:pb-0 md:pl-0 ${c.w ? "" : "lg:whitespace-nowrap"}`}>
             {c.links.map((l) => (
               <li key={l}>
-                <a href="#" className="footer-link">
+                <a href={HREF[l] ?? "#"} className="footer-link">
                   {l}
                 </a>
               </li>
