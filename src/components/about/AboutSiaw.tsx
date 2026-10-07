@@ -39,7 +39,7 @@ export default function AboutSiaw() {
           Supported by Singapore Food Agency, Enterprise Singapore and Singapore Tourism Board.*
         </p>
         <div className="pt-[6px]">
-          <Pill href="#" className="border-[1.5px] border-accent bg-mint text-accent lg:max-xl:h-auto lg:max-xl:min-h-[52px] lg:max-xl:py-[12px] lg:max-xl:whitespace-normal">
+          <Pill href="/siaw" className="border-[1.5px] border-accent bg-mint text-accent lg:max-xl:h-auto lg:max-xl:min-h-[52px] lg:max-xl:py-[12px] lg:max-xl:whitespace-normal">
             Discover Singapore International Agri-Week 2027
           </Pill>
         </div>

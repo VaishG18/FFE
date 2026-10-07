@@ -19,7 +19,7 @@ function Logo({ className = "" }: { className?: string }) {
 
 export default function Partners() {
   return (
-    <section className="container-page mt-[58px] md:mt-16 lg:mt-[74px]" aria-label="Partners">
+    <section id="partners" className="container-page mt-[58px] md:mt-16 lg:mt-[74px]" aria-label="Partners">
       <div className="flex flex-wrap justify-between gap-y-10 pl-[24px] md:justify-center md:gap-x-[313px] md:pl-0" data-reveal>
         {[
           ["Held In", "Held In"],

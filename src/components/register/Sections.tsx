@@ -136,7 +136,7 @@ export function AllAccess() {
 /** Hosted Buyers (793:4125): 1360×370 mint card, 540×330 photo at (20, 20), content 48px right of it (gap 12). */
 export function HostedBuyers() {
   return (
-    <section className={`untrim relative mt-[40px] lg:mt-[24px] ${ROW}`}>
+    <section id="hosted-buyers" className={`untrim relative mt-[40px] lg:mt-[24px] ${ROW}`}>
       <div className="relative flex flex-col gap-[28px] rounded-[24px] bg-linear-to-r from-mint to-[#eef6ef] p-[16px] pb-[28px] md:rounded-[28px] md:p-[20px] lg:flex-row lg:items-center lg:gap-[48px] lg:pr-[40px]">
         <div className="group relative aspect-[540/330] w-full shrink-0 overflow-hidden rounded-[20px] bg-linear-to-b from-mint to-[#c2e3c3] lg:w-[42%] xl:w-[540px]" data-reveal>
           {/* Fill 146.53% × 125.92% at (−12.73%, −26.01%): the photo's true ratio. */}
@@ -161,8 +161,8 @@ export function HostedBuyers() {
             programme benefits and application details.
           </p>
           <div className="pt-[6px]">
-            {/* TODO: hosted buyers interest form. */}
-            <Pill href="#" className="border-[1.5px] border-black text-black hover:bg-black/5">
+            {/* Applications open later: interest = newsletter sign-up for now. */}
+            <Pill href="/subscribe" className="border-[1.5px] border-black text-black hover:bg-black/5">
               Register Your Interest for Hosted Buyers
             </Pill>
           </div>

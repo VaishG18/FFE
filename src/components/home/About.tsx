@@ -24,7 +24,7 @@ export default function About() {
         </p>
         <div className="mt-[18px] flex flex-wrap gap-[7px] md:mt-[32px] md:gap-[12px] lg:ml-px">
           <Button
-            href="#ecosystem"
+            href="/about"
             chevron={chevronAccent}
             w={220}
             h={52}
@@ -36,7 +36,7 @@ export default function About() {
             Discover The Expo
           </Button>
           <Button
-            href="#organiser"
+            href="/our-story"
             chevron={chevronInk}
             w={172}
             h={52}

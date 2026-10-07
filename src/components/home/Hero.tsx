@@ -62,18 +62,18 @@ export default function Hero() {
 
           {/* Mobile CTAs (318:1811): stacked, Apply first as the solid pill. */}
           <div className="load-in mt-[18px] flex flex-col items-start gap-[11px] md:hidden" style={i(4)}>
-            <Button href="#be-involved" chevron={chevronSmBrand} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="bg-white text-[#31a834]">
+            <Button href="/apply-to-exhibit" chevron={chevronSmBrand} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="bg-white text-[#31a834]">
               Apply To Exhibit
             </Button>
-            <Button href="#be-involved" chevron={chevronSmWhite} w={160} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white">
+            <Button href="/register-to-visit" chevron={chevronSmWhite} w={160} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white">
               Register to Visit
             </Button>
           </div>
           <div className="load-in mt-[28px] hidden flex-wrap gap-[13px] md:flex" style={i(4)}>
-            <Button href="#be-involved" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={12} fs={15} className="border border-white bg-white text-brand">
+            <Button href="/register-to-visit" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={12} fs={15} className="border border-white bg-white text-brand">
               Register to Visit
             </Button>
-            <Button href="#be-involved" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} className="border border-white text-white hover:bg-white/10">
+            <Button href="/apply-to-exhibit" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} className="border border-white text-white hover:bg-white/10">
               Apply To Exhibit
             </Button>
             <Button href="#newsletter" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} className="border border-white text-white hover:bg-white/10">

@@ -265,10 +265,10 @@ export default function PageHero({ eyebrow, title, children, img, imgBox, date, 
 export function HeroCtas({ stayHref, className = "", style }: { stayHref: string; className?: string; style?: CSSProperties }) {
   return (
     <div className={`flex flex-col items-start gap-[11px] md:flex-row md:flex-wrap md:gap-[13px] ${className}`} style={style}>
-      <Button href="/#be-involved" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
+      <Button href="/register-to-visit" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
         Register to Visit
       </Button>
-      <Button href="/#be-involved" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
+      <Button href="/apply-to-exhibit" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">
         Apply To Exhibit
       </Button>
       <Button href={stayHref} chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">

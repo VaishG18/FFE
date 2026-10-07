@@ -53,7 +53,7 @@ export default function Buyers() {
           Build new relationships, reconnect with existing customers and put your business in front of prospective buyers from across Asia Pacific and
           global markets.
         </p>
-        <Pill href="#" className="border-[1.5px] border-black text-black hover:bg-black/5">
+        <Pill href="/who-should-visit" className="border-[1.5px] border-black text-black hover:bg-black/5">
           Who Should Visit
         </Pill>
       </div>

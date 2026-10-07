@@ -30,10 +30,10 @@ export default function JoinPanel() {
             Connect with the businesses, technologies and decision-makers shaping the future of fresh food across Asia Pacific.
           </p>
           <div className="mt-[20px] flex flex-col items-start gap-[11px] md:mt-[17.38px] md:flex-row md:flex-wrap md:gap-[13px]">
-            <Button href="/#be-involved" chevron={chevronSmWhite} w={160} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-accent bg-accent text-white">
+            <Button href="/register-to-visit" chevron={chevronSmWhite} w={160} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-accent bg-accent text-white">
               Register to Visit
             </Button>
-            <Button href="/#be-involved" chevron={chevronSmAccent} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-accent text-accent hover:bg-mint">
+            <Button href="/apply-to-exhibit" chevron={chevronSmAccent} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-accent text-accent hover:bg-mint">
               Apply To Exhibit
             </Button>
             <Button href="/subscribe" chevron={chevronSmAccent} w={162} h={40} pl={19} gap={14} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-accent text-accent hover:bg-mint">

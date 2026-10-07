@@ -24,10 +24,10 @@ const CARDS: Card[] = [
     ctaGap: "gap-[9px]",
     ctas: (
       <>
-        <Button href="/#be-involved" chevron={chevronBlack} w={162} h={52} pl={33} gap={16.39} className="border-[1.5px] border-white bg-white text-black">
+        <Button href="/why-visit" chevron={chevronBlack} w={162} h={52} pl={33} gap={16.39} className="border-[1.5px] border-white bg-white text-black">
           Why Visit
         </Button>
-        <Button href="/#be-involved" chevron={chevronWhite} w={220} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
+        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
           Who Should Visit
         </Button>
       </>
@@ -54,10 +54,10 @@ const CARDS: Card[] = [
     ctaGap: "gap-[11px]",
     ctas: (
       <>
-        <Button href="/#be-involved" chevron={chevronWhite} w={172} h={52} pl={27} gap={16.8} className="border-[1.5px] border-accent bg-accent text-white">
+        <Button href="/why-exhibit" chevron={chevronWhite} w={172} h={52} pl={27} gap={16.8} className="border-[1.5px] border-accent bg-accent text-white">
           Why Exhibit
         </Button>
-        <Button href="/#be-involved" chevron={chevronWhite} w={220} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
+        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
           Who Should Visit
         </Button>
       </>

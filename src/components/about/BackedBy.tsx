@@ -41,7 +41,7 @@ export default function BackedBy() {
           </p>
         </div>
         <div className="pt-[6px]">
-          <Pill href="#" className="border-[1.5px] border-accent bg-mint text-accent">
+          <Pill href="/messe-berlin" className="border-[1.5px] border-accent bg-mint text-accent">
             Discover Messe Berlin
           </Pill>
         </div>

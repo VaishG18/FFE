@@ -17,10 +17,10 @@ const CARDS: { title: string; desc: string; tags: string; img: ReactNode; pl: st
     gap: "md:gap-[9px]",
     buttons: (
       <>
-        <Button href="#" chevron={chevronBlack} w={162} h={52} pl={33} gap={9.73} m={{ w: 125, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white bg-white text-black">
+        <Button href="/why-visit" chevron={chevronBlack} w={162} h={52} pl={33} gap={9.73} m={{ w: 125, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white bg-white text-black">
           Why Visit
         </Button>
-        <Button href="#" chevron={chevronWhite} w={220} h={52} pl={33} gap={8.83} m={{ w: 179, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
+        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={8.83} m={{ w: 179, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
           Who Should Visit
         </Button>
       </>
@@ -44,11 +44,11 @@ const CARDS: { title: string; desc: string; tags: string; img: ReactNode; pl: st
     gap: "md:gap-[11px]",
     buttons: (
       <>
-        <Button href="#" chevron={chevronWhite} w={172} h={52} pl={27} gap={10.14} m={{ w: 142, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-accent bg-accent text-white">
+        <Button href="/why-exhibit" chevron={chevronWhite} w={172} h={52} pl={27} gap={10.14} m={{ w: 142, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-accent bg-accent text-white">
           Why Exhibit
         </Button>
         {/* Label as in Figma (736:2463). */}
-        <Button href="#" chevron={chevronWhite} w={220} h={52} pl={33} gap={8.83} m={{ w: 179, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
+        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={8.83} m={{ w: 179, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
           Who Should Visit
         </Button>
       </>

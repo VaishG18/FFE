@@ -52,7 +52,7 @@ export default function ProgrammeHero() {
           </p>
           <div className="load-in mt-[24px] flex flex-col items-start gap-[11px] md:flex-row md:flex-wrap md:gap-[13px] lg:mt-[29px]" style={i(3)}>
             <Button
-              href="/#be-involved"
+              href="/register-to-visit"
               chevron={chevronSmBrand}
               w={160}
               h={40}
@@ -65,7 +65,7 @@ export default function ProgrammeHero() {
               Register to Visit
             </Button>
             <Button
-              href="/#be-involved"
+              href="/plan-your-visit"
               chevron={chevronSmWhite}
               w={155.29}
               h={40}

@@ -76,7 +76,7 @@ export default function Ecosystem() {
 
         <div className="mt-[44px] flex justify-center md:mt-10 lg:mt-[42px]" data-reveal>
           <Button
-            href="#"
+            href="/ecosystem"
             chevron={chevronWhite}
             w={398}
             h={52}

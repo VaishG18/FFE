@@ -81,7 +81,7 @@ export default function JoinBanner({
           {ctas ?? (
             <div className="mt-[23px] flex flex-col items-start gap-[11px] md:mt-[26px] md:flex-row md:flex-wrap md:gap-[10px]">
               <Button
-                href="#be-involved"
+                href="/apply-to-exhibit"
                 chevron={chevronBrand}
                 w={220}
                 h={52}
@@ -93,7 +93,7 @@ export default function JoinBanner({
                 Apply To Exhibit
               </Button>
               <Button
-                href="#be-involved"
+                href="/register-to-visit"
                 chevron={chevronWhite}
                 w={220}
                 h={52}

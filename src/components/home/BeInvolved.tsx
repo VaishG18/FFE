@@ -32,7 +32,7 @@ export default function BeInvolved() {
             btnMt: "mt-[25px] md:mt-[23px]",
             cta: (
               <Button
-                href="#"
+                href="/apply-to-exhibit"
                 chevron={chevronWhite}
                 w={220}
                 h={52}
@@ -58,7 +58,7 @@ export default function BeInvolved() {
             btnMt: "mt-[18.8px] md:mt-[23px]",
             cta: (
               <Button
-                href="#"
+                href="/register-to-visit"
                 chevron={chevronBlack}
                 w={220}
                 h={52}

@@ -7,9 +7,9 @@ import chevronRight from "@/assets/contact/icon-chevron-right.svg";
 
 const LINKS: { title: string; desc: [string, string?]; icon: StaticImageData; href: string }[] = [
   { title: "Event Overview", desc: ["Key dates, venue and", "what to expect"], icon: calendar, href: "/about" },
-  { title: "Why Exhibit", desc: ["Reasons to exhibit and", "key benefits"], icon: users, href: "/#be-involved" },
-  { title: "Why Visit", desc: ["Who should attend and", "what you’ll discover"], icon: users, href: "/#be-involved" },
-  { title: "Register to Visit", desc: ["Join Asia Pacific Fresh Food Ecosystem"], icon: file, href: "/#be-involved" },
+  { title: "Why Exhibit", desc: ["Reasons to exhibit and", "key benefits"], icon: users, href: "/why-exhibit" },
+  { title: "Why Visit", desc: ["Who should attend and", "what you’ll discover"], icon: users, href: "/why-visit" },
+  { title: "Register to Visit", desc: ["Join Asia Pacific Fresh Food Ecosystem"], icon: file, href: "/register-to-visit" },
 ];
 
 /** Figma 736:2879: 1360px mint panel (40px side margins) with four 108px link cards. */

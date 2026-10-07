@@ -22,7 +22,7 @@ export default function Elevate() {
             experience.
           </p>
           <div className="pt-[8px]">
-            <Pill href="#" className="border-[1.5px] border-black text-black hover:bg-black/5 max-md:px-[18px]">
+            <Pill href="/contact#enquiry" className="border-[1.5px] border-black text-black hover:bg-black/5 max-md:px-[18px]">
               Explore Sponsorship &amp; Branding Opportunities
             </Pill>
           </div>

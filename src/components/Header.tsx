@@ -15,8 +15,8 @@ import { Button, crop } from "./ui";
 // Absolute so the links work from every page; same-page hashes still just scroll.
 const NAV = [
   { label: "About", href: "/about" },
-  { label: "Exhibit", href: "/#be-involved" },
-  { label: "Visit", href: "/#be-involved" },
+  { label: "Exhibit", href: "/why-exhibit" },
+  { label: "Visit", href: "/why-visit" },
   { label: "Programme", href: "/programme" },
   { label: "News & Media", href: "/news" },
 ];
