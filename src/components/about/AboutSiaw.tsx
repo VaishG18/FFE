@@ -2,6 +2,9 @@ import Image from "next/image";
 import siaw from "@/assets/about/siaw.jpg";
 import { Pill } from "../ui";
 
+// Long CTA on phones: full width, 20px sides, 13px top/bottom, balanced two lines.
+const MOB = "max-md:w-full max-md:px-[20px] max-md:py-[13px] max-md:leading-[22px] max-md:text-balance";
+
 /** Figma 736:2219: 560×428 photo, 72px gap, content column. */
 export default function AboutSiaw() {
   return (
@@ -39,9 +42,11 @@ export default function AboutSiaw() {
           Supported by Singapore Food Agency, Enterprise Singapore and Singapore Tourism Board.*
         </p>
         <div className="pt-[6px]">
-          <Pill href="/siaw" className="border-[1.5px] border-accent bg-mint text-accent lg:max-xl:h-auto lg:max-xl:min-h-[52px] lg:max-xl:py-[12px] lg:max-xl:whitespace-normal">
-            <span className="md:hidden">Discover SIAW 2027</span>
-            <span className="max-md:hidden">Discover Singapore International Agri-Week 2027</span>
+          <Pill
+            href="/siaw"
+            className={`border-[1.5px] border-accent bg-mint text-accent lg:max-xl:h-auto lg:max-xl:min-h-[52px] lg:max-xl:py-[12px] lg:max-xl:whitespace-normal ${MOB}`}
+          >
+            Discover Singapore International Agri{"\u2011"}Week 2027
           </Pill>
         </div>
       </div>

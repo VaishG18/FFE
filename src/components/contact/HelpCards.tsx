@@ -7,9 +7,18 @@ import partnership from "@/assets/about/point-3.png";
 
 const CARDS: { title: string; desc: string; icon: StaticImageData; tall?: boolean }[] = [
   { title: "General Enquiries", desc: "Have a question about the event? Our team is happy to help.", icon: general },
-  { title: "Exhibition Enquiries", desc: "Find out more about exhibiting opportunities and showcase your products and solutions.", icon: exhibition, tall: true },
+  {
+    title: "Exhibition Enquiries",
+    desc: "Find out more about exhibiting opportunities and showcase your products and solutions.",
+    icon: exhibition,
+    tall: true,
+  },
   { title: "Sponsorship Enquiries", desc: "Discover sponsorship opportunities to increase your brand visibility.", icon: sponsorship },
-  { title: "Partnership Opportunities", desc: "Explore strategic partnerships, industry collaborations and supporting organisations.", icon: partnership },
+  {
+    title: "Partnership Opportunities",
+    desc: "Explore strategic partnerships, industry collaborations and supporting organisations.",
+    icon: partnership,
+  },
 ];
 
 /** Figma 736:2743: heading + four 299px cards (justify-between column, 24px apart). */
@@ -18,7 +27,8 @@ export default function HelpCards() {
     <section className="untrim container-narrow mt-[48px] lg:mt-[66px]">
       <div className="flex flex-col items-start gap-[14px]" data-reveal>
         <p className="text-[15px] leading-[19px] font-medium tracking-[0.02em] text-accent uppercase">How can we help?</p>
-        <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[40px] md:leading-[46px] lg:text-[48px] lg:leading-[54px]">
+        {/* Phones: font scales with the column (title ≈ 11.2× its size) so it stays on one line; 30px from ~400px. */}
+        <h2 className="font-display text-[length:clamp(24px,calc((100vw-52px)/11.6),30px)] leading-[1.2] font-semibold whitespace-nowrap text-forest md:text-[40px] md:leading-[46px] lg:text-[48px] lg:leading-[54px]">
           Our Team is Here for You
         </h2>
         <p className="text-[17px] leading-[23px] font-medium text-body md:text-[18px]">

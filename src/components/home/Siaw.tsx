@@ -2,7 +2,10 @@ import Image from "next/image";
 import dividerCircle from "@/assets/divider-circle.svg";
 import leaf from "@/assets/leaf.png";
 import chevronAccent from "@/assets/chevron-accent.svg";
-import { Button, crop } from "../ui";
+import { Button, Pill, crop } from "../ui";
+
+// Long CTA on phones: full width, 20px sides, 13px top/bottom, balanced two lines.
+const MOB = "max-md:w-full max-md:px-[20px] max-md:py-[13px] max-md:leading-[22px] max-md:text-balance";
 
 export default function Siaw() {
   return (
@@ -32,14 +35,18 @@ export default function Siaw() {
         </div>
         <div className="lg:basis-[622px] lg:pt-[16px]" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
           <p className="text-lead max-w-[361px] md:max-w-[620px] lg:ml-[2px]">
-            Fresh Food Expo APAC is part of Singapore International Agri-Food Week (SIAW) 2027, bringing
-            together government, industry, innovation and business to advance a more sustainable, resilient and connected food future in Asia.
+            Fresh Food Expo APAC is part of Singapore International Agri-Food Week (SIAW) 2027, bringing together government, industry, innovation and
+            business to advance a more sustainable, resilient and connected food future in Asia.
             <br />
             <br />
             Within SIAW, Fresh Food Expo APAC serves as the dedicated B2B trade platform for the fresh food ecosystem, connecting fresh food, agri and
             fresh technology, logistics and distribution.
           </p>
           <div className="mt-[25px] flex md:mt-[39px]">
+            {/* Phones: full-width pill, two balanced lines, chevron after the last word. */}
+            <Pill href="/siaw" className={`border-[1.5px] border-accent bg-mint text-accent md:hidden ${MOB}`}>
+              Discover Singapore International Agri{"\u2011"}Food Week
+            </Pill>
             <Button
               href="/siaw"
               chevron={chevronAccent}
@@ -47,11 +54,9 @@ export default function Siaw() {
               h={52}
               pl={28}
               gap={16.66}
-              className="border-[1.5px] border-accent bg-mint text-accent"
+              className="border-[1.5px] border-accent bg-mint text-accent max-md:hidden"
             >
-              {/* Phones: short one-line label (the full name wraps to 3 lines in a pill). */}
-              <span className="md:hidden">Discover SIAW 2027</span>
-              <span className="max-md:hidden">Discover Singapore International Agri-Food Week</span>
+              Discover Singapore International Agri-Food Week
             </Button>
           </div>
         </div>
