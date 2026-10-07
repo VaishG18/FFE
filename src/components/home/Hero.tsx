@@ -58,7 +58,7 @@ export default function Hero() {
             <span className="md:hidden">Connecting fresh food technologies, logistics, and distribution from farm to fork</span>
             <span className="hidden md:inline">Connecting Fresh Food, Technology, Logistics & Distribution From Farm to Fork</span>
           </p>
-          <DateVenue className="load-in mt-[22px] md:mt-[28px]" style={i(3)} />
+          <DateVenue date="16-18 Nov. 2027" className="load-in mt-[22px] md:mt-[28px]" style={i(3)} />
 
           {/* Mobile CTAs (318:1811): stacked, Apply first as the solid pill. */}
           <div className="load-in mt-[18px] flex flex-col items-start gap-[11px] md:hidden" style={i(4)}>

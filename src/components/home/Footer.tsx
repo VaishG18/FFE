@@ -24,7 +24,7 @@ export default function Footer({ mt = "mt-[47px] md:mt-20 lg:mt-[96px]" }: { mt?
                 <a
                   href="#"
                   aria-label={s.label}
-                  className="block rounded-md transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+                  className="tap-y block rounded-md transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                 >
                   <Image src={s.icon} alt="" sizes="29px" className="size-[29px]" />
                 </a>

@@ -14,7 +14,7 @@ const COLS = [
   { title: "News & Media", w: 0, gap: 5, links: ["News & Press Release", "FAQs", "Subscribe Newsletter"] },
 ];
 
-// Built pages; everything else stays "#" until its page exists. Exhibit/Visit CTAs go where the header's do.
+// Built pages; everything else stays "#" until its page exists. Exhibit/Visit CTAs go where the header’s do.
 const HREF: Record<string, string> = {
   Overview: "/about",
   "Our Story": "/our-story",
@@ -23,8 +23,11 @@ const HREF: Record<string, string> = {
   "Contact Us": "/contact",
   "Why Exhibit": "/why-exhibit",
   "Who Should Exhibit": "/who-should-exhibit",
-  "Apply to Exhibit": "/#be-involved",
-  "Register to Visit": "/#be-involved",
+  "Apply to Exhibit": "/apply-to-exhibit",
+  "Why Visit": "/why-visit",
+  "Who Should Visit": "/who-should-visit",
+  "Plan Your Visit": "/plan-your-visit",
+  "Register to Visit": "/register-to-visit",
   "Conference Programme": "/programme",
   "News & Press Release": "/news",
   "Subscribe Newsletter": "/subscribe",

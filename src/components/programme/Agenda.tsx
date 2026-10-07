@@ -92,7 +92,7 @@ export default function Agenda() {
                 type="button"
                 aria-pressed={day === d.value}
                 onClick={() => setDay(d.value)}
-                className={`min-h-[42px] rounded-full px-[20px] text-[14px] leading-[18px] font-medium transition-colors duration-(--dur-ui) ${
+                className={`tap min-h-[42px] rounded-full px-[20px] text-[14px] leading-[18px] font-medium transition-colors duration-(--dur-ui) ${
                   day === d.value ? "bg-accent text-white" : "border border-[#d9e6db] bg-white text-black hover:border-accent hover:bg-mint"
                 }`}
               >

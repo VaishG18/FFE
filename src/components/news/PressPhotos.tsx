@@ -1,20 +1,20 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import photo from "@/assets/exhibit.jpg";
+import photo from "@/assets/news/media-gallery.jpg";
 import { Pill } from "../ui";
 
-/** Figma 736:3206: 1229.5px block — heading, 538×310 photo, copy + CTA beside it. */
+/** Figma 736:3206 (content per revision 730:205): 1229.5px block — heading, 538×310 photo, copy + CTA beside it. */
 export default function PressPhotos() {
   return (
     <section className="untrim mx-auto mt-[24px] w-[min(1229.5px,100%-2*var(--gutter))] lg:mt-0">
       <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[40px] md:leading-[46px] lg:text-[44px] lg:leading-[50px]" data-reveal>
-        The <span className="text-accent">latest photos</span> and videos
+        Official Media Gallery
       </h2>
       <div className="mt-[24px] flex flex-col gap-[24px] lg:mt-[27px] lg:flex-row lg:items-start lg:gap-[37.5px]">
         <div className="group relative aspect-[538/310] w-full overflow-hidden rounded-[24px] bg-[#d9d9d9] lg:w-[538px] lg:shrink-0 lg:rounded-[30px]" data-reveal>
           <Image
             src={photo}
-            alt="Exhibitors in conversation at the Hungary pavilion"
+            alt="Broadcast camera filming a speaker on stage at Grüne Woche"
             placeholder="blur"
             sizes="(min-width: 1024px) 538px, 100vw"
             className="zoom absolute inset-0 size-full object-cover"

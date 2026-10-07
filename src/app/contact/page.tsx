@@ -15,17 +15,21 @@ export const metadata: Metadata = {
     "Get in touch with the Fresh Food Expo APAC team about exhibiting, sponsorship, partnerships or general enquiries. We reply within three business days.",
 };
 
-/** Figma 736:2694 (Contact_Us_Desktop). Sections sit 65px apart, as in the frame. */
+/** Figma 736:2694 (Contact_Us_Desktop), hero per revision 450:2843. Sections sit 65px apart, as in the frame. */
 export default function ContactPage() {
   return (
     <>
       <Header />
       <main className="overflow-x-clip">
-        <PageHero eyebrow="Get in touch" title="Contact Us" img={hero} imgBox="lg:top-[0.03%] lg:left-[37.38%] lg:w-[62.66%]" curveLeft={5} stayHref="/subscribe">
-          Whether you’re looking to exhibit, <br className="hidden lg:block" />
-          explore a partnership, enquire about sponsorship or simply finding out more about FFE APAC — our team is ready to help. Fill in the form below
-          and we’ll be in touch within three business days.
-        </PageHero>
+        {/* Figma 450:2843 revision: 298px title-only hero. Fill 83.25% × 223.38% at (16.75%, −93.64%) is the photo's true ratio. */}
+        <PageHero
+          size="contact"
+          eyebrow="Get in touch"
+          title="Contact Us"
+          img={hero}
+          imgBox="lg:top-[-93.64%] lg:left-[16.75%] lg:h-[223.38%]! lg:w-[83.25%] lg:max-w-none"
+          curveLeft={-0.25}
+        />
         <HelpCards />
         <SendMessage />
         <UsefulResources />

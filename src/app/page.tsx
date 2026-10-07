@@ -23,11 +23,12 @@ export default function Home() {
         <Ecosystem />
         <BeInvolved />
         <Organiser />
-        <JoinBanner />
+        <JoinBanner date="16-18 Nov. 2027" />
         <Newsletter />
         <Partners />
       </main>
-      <Footer />
+      {/* Footer logo 12px lower than the shared default (Figma 621:791 at y 5947). */}
+      <Footer mt="mt-[47px] md:mt-20 lg:mt-[108px]" />
       <RevealObserver />
     </>
   );

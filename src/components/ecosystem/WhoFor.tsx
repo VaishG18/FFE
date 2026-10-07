@@ -9,8 +9,8 @@ import { Button } from "../ui";
 type Card = { title: string; text: string; roles: string; img: ReactNode; pl: string; textMt: string; textW: string; rolesW: string; ctaGap: string; ctas: ReactNode };
 
 // Figma 669:1481: two 622×467 cards, 42px apart (ratio kept on single-column md and on xl; taller on 2-column lg); content anchored 39px above the bottom edge.
-// Gaps are tuned so title/copy/roles land on Figma's y (181|178 / 240 / 327) with the browser's trimmed metrics,
-// and pill gaps put each chevron at Figma's x (the rendered labels run ~6px narrower than Figma's text boxes).
+// Gaps are tuned so title/copy/roles land on Figma’s y (181|178 / 240 / 327) with the browser’s trimmed metrics,
+// and pill gaps put each chevron at Figma’s x (the rendered labels run ~6px narrower than Figma’s text boxes).
 const CARDS: Card[] = [
   {
     title: "Looking to Visit?",

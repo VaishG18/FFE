@@ -1,0 +1,62 @@
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import RevealObserver from "@/components/RevealObserver";
+import Footer from "@/components/home/Footer";
+import PageHero, { HeroCtas } from "@/components/PageHero";
+import JoinBanner from "@/components/home/JoinBanner";
+import RuleEyebrow from "@/components/story/RuleEyebrow";
+import VisitorGroups from "@/components/visit/VisitorGroups";
+import hero from "@/assets/visit/hero.jpg";
+
+export const metadata: Metadata = {
+  title: "Who Should Visit | Fresh Food Expo APAC",
+  description:
+    "Fresh Food Expo APAC is designed for buyers, sourcing professionals and industry decision-makers looking for fresh food products, technologies and logistics solutions from across Asia Pacific and global markets.",
+};
+
+/** Figma 781:2064 (Who_Should_Visit_Desktop). */
+export default function WhoShouldVisitPage() {
+  return (
+    <>
+      <Header />
+      <main className="overflow-x-clip">
+        <PageHero
+          size="visit"
+          title="Who Should Visit"
+          img={hero}
+          // Figma fill is 81.25% × 176.9% (1.3% taller than the photo); kept at its true ratio, same width, left edge and vertical centre.
+          imgBox="lg:top-[-59.47%] lg:left-[18.76%] lg:h-[174.64%]! lg:w-[81.25%] lg:max-w-none"
+          curveLeft={3.88}
+          stayHref="/subscribe"
+        >
+          Fresh Food Expo APAC is designed for buyers, sourcing professionals and industry decision-makers looking for fresh food products, technologies
+          and logistics solutions from across Asia Pacific and global markets.
+        </PageHero>
+
+        <VisitorGroups />
+
+        {/* Figma 789:3766: 329px banner, eyebrow + date title, venue row only, hero CTAs; 24px below the cards. */}
+        <JoinBanner
+          layout="mt-[48px] h-[600px] lg:mt-[24px] lg:h-[329px]"
+          imgCls="lg:top-[-26.21%] lg:left-[23.73%] lg:h-[176.74%] lg:w-[76.29%]"
+          inner="lg:pt-[53px] lg:pb-0 lg:pl-[14.5px]"
+          eyebrow={
+            <div className="mb-[16px] lg:mb-[23px] lg:ml-[2.5px]">
+              <RuleEyebrow light>Connect with the fresh food ecosystem</RuleEyebrow>
+            </div>
+          }
+          title="16–18 November 2027"
+          // Figma’s title box starts 7px left of the rule below it.
+          titleCls="md:max-w-[730px]! lg:-ml-[7px]"
+          lead={false}
+          date={false}
+          dateCls="mt-[25px] md:mt-[30px] lg:mt-[29.41px]"
+          ctas={<HeroCtas stayHref="/subscribe" className="mt-[23px] md:mt-[32px]" />}
+        />
+      </main>
+      {/* Footer content (781:2199) sits 30px into its frame, 24px below the banner. */}
+      <Footer mt="mt-[48px] lg:mt-[54px]" />
+      <RevealObserver />
+    </>
+  );
+}

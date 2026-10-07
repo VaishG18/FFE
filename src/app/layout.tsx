@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#f4f8f4" };
 
 // Runs before paint: marks JS as available so scroll-reveal styles only hide
-// content when the observer can actually reveal it. If the observer hasn't
+// content when the observer can actually reveal it. If the observer hasn’t
 // booted within 3s (script error, blocked JS), the class is removed again.
 const revealBoot = `document.documentElement.classList.add('js');setTimeout(function(){if(!window.__revealReady)document.documentElement.classList.remove('js')},3000);`;
 

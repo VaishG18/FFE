@@ -27,7 +27,7 @@ const PILLARS: Pillar[] = [
   {
     title: "Fresh Food",
     desc: "The products at the heart of the ecosystem.",
-    items: ["Fruits & vegetables", "Meat & poultry", "Seafood", "Eggs & dairy"],
+    items: ["Fruit & Vegetables", "Meat & Poultry", "Seafood", "Eggs & Dairy"],
     img: imgFresh,
     alt: "Crates of fresh broccoli and vegetables on display",
     crop: crop(102.69, 123.98, -0.03, 0.21),

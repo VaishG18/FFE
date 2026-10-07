@@ -4,7 +4,7 @@ import target from "@/assets/about/point-2.png";
 import programme from "@/assets/subscribe/b-programme.png";
 import handshake from "@/assets/about/point-3.png";
 import bulb from "@/assets/about/point-4.png";
-import shade from "@/assets/subscribe/shade.jpg";
+import shade from "@/assets/subscribe/card.jpg";
 import dots from "@/assets/subscribe/dots.svg";
 import SubscribeForm from "./SubscribeForm";
 
@@ -44,11 +44,11 @@ export default function SubscribeSection() {
           ))}
         </ul>
 
-        {/* Image card (736:3340): the visible layer is "Shade" — 640×384 photo with a green fade. */}
+        {/* Image card (736:3340 / 495:2318): the visible layer is "Shade" — 640×384 photo (fill 109.16% wide, true ratio) with a green fade. */}
         <div className="group relative h-[340px] overflow-hidden rounded-[24px] bg-[#d9d9d9] md:h-[384px] lg:rounded-[30px]" data-reveal>
           <Image
             src={shade}
-            alt="Guests and dignitaries gathered on stage at a Messe Berlin trade fair opening"
+            alt="Exhibitors in conversation at a digital crop-monitoring stand"
             placeholder="blur"
             sizes="(min-width: 1280px) 640px, (min-width: 1024px) 48vw, 100vw"
             className="zoom absolute inset-0 size-full object-cover"

@@ -15,12 +15,14 @@ type Props = {
   titleCls?: string;
   /** Desktop crop of the venue photo (Figma fill box). */
   imgCls?: string;
-  lead?: ReactNode;
+  /** `false` drops the paragraph (Who Should Visit). */
+  lead?: ReactNode | false;
   /** Desktop content offsets: wrapper padding, lead gap, date block margins. */
   inner?: string;
   leadMt?: string;
   dateCls?: string;
-  date?: string;
+  /** `false` = venue row only. */
+  date?: string | false;
   /** Replaces the homepage's two 220×52 CTAs (SIAW uses the hero's three 40px pills). */
   ctas?: ReactNode;
 };
@@ -67,10 +69,12 @@ export default function JoinBanner({
               </>
             )}
           </h2>
-          <p className={`text-lead mt-[26px] max-w-[330px] leading-[24px] md:mt-[28px] md:max-w-[579px] md:leading-[normal] ${leadMt}`}>
-            {lead ??
-              "Connect with the fresh food suppliers, technologies, logistics solutions and decision-makers shaping how fresh food is preserved, moved and brought to market across Asia Pacific."}
-          </p>
+          {lead !== false && (
+            <p className={`text-lead mt-[26px] max-w-[330px] leading-[24px] md:mt-[28px] md:max-w-[579px] md:leading-[normal] ${leadMt}`}>
+              {lead ??
+                "Connect with the fresh food suppliers, technologies, logistics solutions and decision-makers shaping how fresh food is preserved, moved and brought to market across Asia Pacific."}
+            </p>
+          )}
         </div>
         <div data-reveal style={{ "--i": 1 } as CSSProperties}>
           <DateVenue date={date} className={dateCls} />

@@ -11,7 +11,7 @@ import { Pill } from "../ui";
 
 type Card = { title: string; text: string; img: StaticImageData; alt: string; pos: string; icon: StaticImageData };
 
-// Figma 777:858 / 777:873 / 777:888 (412×268). Separators keep Figma's double spaces from lg.
+// Figma 777:858 / 777:873 / 777:888 (412×268). Separators keep Figma’s double spaces from lg.
 const CARDS: Card[] = [
   {
     title: "Fresh Food",

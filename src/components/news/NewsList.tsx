@@ -189,7 +189,7 @@ export default function NewsList() {
               key={n}
               href="#"
               aria-current={n === "1" ? "page" : undefined}
-              className={`flex size-[40px] items-center justify-center rounded-full border-[1.5px] text-[15px] leading-[18px] font-semibold transition-colors duration-(--dur-ui) ${
+              className={`tap flex size-[40px] items-center justify-center rounded-full border-[1.5px] text-[15px] leading-[18px] font-semibold transition-colors duration-(--dur-ui) ${
                 n === "1" ? "border-accent bg-accent text-white" : "border-[#e0e0e0] bg-white text-accent hover:border-accent"
               }`}
             >
@@ -200,7 +200,7 @@ export default function NewsList() {
         <a
           href="#"
           aria-label="Next page"
-          className="flex size-[40px] items-center justify-center rounded-full border-[1.5px] border-accent bg-white transition-colors duration-(--dur-ui) hover:bg-mint"
+          className="tap flex size-[40px] items-center justify-center rounded-full border-[1.5px] border-accent bg-white transition-colors duration-(--dur-ui) hover:bg-mint"
         >
           <Image src={chevronRight} alt="" className="size-[18px]" />
         </a>

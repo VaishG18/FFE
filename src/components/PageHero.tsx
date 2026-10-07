@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from "react";
 import heroCurve from "@/assets/about/hero-curve.png";
 import ecoCurve from "@/assets/ecosystem/hero-curve.svg";
 import exhibitCurve from "@/assets/exhibit/hero-curve.svg";
+import registerCurve from "@/assets/register/hero-curve.svg";
 import chevronSmBrand from "@/assets/chevron-sm-brand.svg";
 import chevronSmWhite from "@/assets/chevron-sm-white.svg";
 import { Button, DateVenue, crop } from "./ui";
@@ -13,7 +14,8 @@ type Props = {
   /** Omitted on Our Story (title only). */
   eyebrow?: string;
   title: ReactNode;
-  children: ReactNode;
+  /** Omitted on Apply to Exhibit (copy sits below the panel). */
+  children?: ReactNode;
   img: StaticImageData;
   /** Desktop position of the photo inside the 1395×501 panel (Figma fill box). */
   imgBox: string;
@@ -33,14 +35,20 @@ type Props = {
    * "story" = Our Story 786:3140: 342px panel, no eyebrow, title cap top 59, 1016/538px fades, eco copy + curve.
    * "exhibit" = Why Exhibit 786:3081: 380px panel, no eyebrow, 18/26 copy, date block + CTAs passed in `cta`.
    * "who" = Who Should Exhibit 786:3189: 316px panel, no eyebrow, 15/23 copy, exhibit curve.
+   * "apply" = Apply to Exhibit 786:3263: 246px panel (30px radius), three-line title only, exhibit curve.
+   * "visit" = Who Should Visit 786:3515: 365px panel (30px radius), no eyebrow, 18/26 copy, exhibit curve.
+   * "plan" = Plan Your Visit 793:4215: 338px panel (30px radius), one 325px fade, one-line copy, date block + CTAs via `cta`.
+   * "register" = Register as a Trade Visitor 793:4301: 404px panel (30px radius), title only; sub, date block + CTAs via `cta`; taller curve.
+   * "why" = Why Visit 869:777: 316px panel (30px radius), title only; date block + CTAs via `cta`; exhibit curve.
+   * "contact" = Contact Us 483:211: 298px panel, eyebrow + title only, image 78 curve at top 118.
    */
-  size?: "default" | "compact" | "tall" | "siaw" | "eco" | "story" | "exhibit" | "who";
+  size?: "default" | "compact" | "tall" | "siaw" | "eco" | "story" | "exhibit" | "who" | "apply" | "visit" | "plan" | "register" | "why" | "contact";
 };
 
 type Size = { panel: string; curve: string; content: string; desc: string; date: string; ctas: string; title?: string; descType?: string; fades?: string[]; curveSrc?: StaticImageData };
 
 const DESC_TYPE = "max-w-[535px] text-[17px] leading-[normal] tracking-[0.02em] md:mt-[22px] md:text-[22px] md:leading-[31px]";
-// Two 538px fades over the photo's left edge.
+// Two 538px fades over the photo’s left edge.
 const FADES = ["left-[16.7%] w-[38.57%]", "left-[36.63%] w-[38.57%]"];
 
 const SIZES: Record<NonNullable<Props["size"]>, Size> = {
@@ -63,7 +71,7 @@ const SIZES: Record<NonNullable<Props["size"]>, Size> = {
   // Title (one line) cap top 105.37, copy (untrimmed, 2×25px) 166.37 and 4px right of the title, CTAs 246.37.
   eco: {
     panel: "lg:h-[351px]",
-    // Group 1000015919: 230.62×184.32 at (−20.98, 171), runs 4.3px past the panel's bottom edge.
+    // Group 1000015919: 230.62×184.32 at (−20.98, 171), runs 4.3px past the panel’s bottom edge.
     curve: "top-[171px] h-[184.316px] w-[230.623px]",
     curveSrc: ecoCurve,
     content: "lg:pt-[64.37px] lg:pl-[1.52px]",
@@ -114,6 +122,80 @@ const SIZES: Record<NonNullable<Props["size"]>, Size> = {
     ctas: "md:mt-[25px]",
     fades: ["left-[16.34%] w-[72.83%]", "left-[16.27%] w-[38.57%]"],
   },
+  // Title cap top 59 at x 67.5 (13px inside the content column). Curve at (3.39, 93), 4px past the bottom edge.
+  apply: {
+    panel: "lg:h-[246px] lg:rounded-[30px]!",
+    curve: "top-[93px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:pt-[59px] lg:pl-[13px]",
+    title: "mt-0!",
+    desc: "",
+    date: "",
+    ctas: "",
+    fades: ["left-[16.34%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
+  // Title cap top 80 at x 54.5; copy (3×26px, untrimmed) top 138, 4px right; CTAs 245. Curve at (3.88, 209).
+  visit: {
+    panel: "lg:h-[365px] lg:rounded-[30px]!",
+    curve: "top-[209px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:pt-[80px]",
+    title: "mt-0!",
+    descType: "max-w-[620px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[26px] lg:ml-[4px]",
+    desc: "lg:mt-[23px]",
+    date: "",
+    ctas: "md:mt-[29px]",
+    fades: ["left-[16.34%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
+  // Title cap top 54 at x 54 (0.5px left of the column); copy (1×26px) top 112; date block 156 (via `cta`), CTAs 251. Curve at (3.88, 174).
+  plan: {
+    panel: "lg:h-[338px] lg:rounded-[30px]!",
+    curve: "top-[174px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:-left-[0.5px] lg:pt-[54px]",
+    title: "mt-0!",
+    descType: "max-w-[620px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[26px]",
+    desc: "lg:mt-[23px]",
+    date: "",
+    ctas: "md:mt-[18px]",
+    // Second fade only at lg–xl, where the narrower panel puts the CTAs over the bright sky.
+    fades: ["left-[34.95%] w-[23.3%]", "left-[34.95%] w-[30%] xl:hidden!"],
+  },
+  // Title cap top 71 at x 55; sub (untrimmed) top 132 via `cta`. Curve Group 1000015919: 196.84×207.85 at (4.39, 215.98).
+  register: {
+    panel: "lg:h-[404px] lg:rounded-[30px]!",
+    curve: "top-[215.98px] h-[207.848px] w-[196.842px]",
+    curveSrc: registerCurve,
+    content: "lg:pt-[71px] lg:pl-[0.5px]",
+    title: "mt-0!",
+    desc: "",
+    date: "",
+    // Browser trims the title to 35px (Figma 34), so 26px lands the sub at y 132.
+    ctas: "md:mt-[26px]",
+    fades: ["left-[16.42%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
+  // Eyebrow cap top 111 at x 54.63, title 41px below. image 78 (213×181) at (−0.25, 118), 1px past the panel’s bottom edge.
+  contact: {
+    panel: "lg:h-[298px]",
+    curve: "top-[118px] h-[181px] w-[213px]",
+    content: "lg:pt-[111px] lg:pl-[0.13px]",
+    desc: "",
+    date: "",
+    ctas: "",
+    fades: ["left-[16.72%] w-[38.57%]", "left-[16.75%] w-[38.57%]"],
+  },
+  // Title cap top 59 at x 55; date block (via `cta`) top 120, CTAs 215. Curve at (3.89, 142).
+  why: {
+    panel: "lg:h-[316px] lg:rounded-[30px]!",
+    curve: "top-[142px] h-[157.316px] w-[196.841px]",
+    curveSrc: exhibitCurve,
+    content: "lg:pt-[59px] lg:pl-[0.5px]",
+    title: "mt-0!",
+    desc: "",
+    date: "",
+    ctas: "md:mt-[26px]",
+    fades: ["left-[16.34%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
+  },
 };
 
 /**
@@ -159,9 +241,11 @@ export default function PageHero({ eyebrow, title, children, img, imgBox, date, 
           >
             {title}
           </h1>
-          <p className={`load-in mt-[23px] ${z.descType ?? DESC_TYPE} ${z.desc}`} style={i(2)}>
-            {children}
-          </p>
+          {children && (
+            <p className={`load-in mt-[23px] ${z.descType ?? DESC_TYPE} ${z.desc}`} style={i(2)}>
+              {children}
+            </p>
+          )}
           {date && <DateVenue date={date} className={`load-in mt-[22px] ${z.date}`} style={i(3)} />}
 
           {cta ? (

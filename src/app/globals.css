@@ -344,6 +344,29 @@ body {
     box-shadow: 0 0 0 4px rgb(217 48 37 / 0.12);
   }
 
+  /* Touch screens: grow small controls to a 44px hit area without moving anything.
+     Percent insets resolve per axis, so only the short side grows. .tap-y = vertical only
+     (closely spaced icons, so neighbours don't overlap). */
+  @media (pointer: coarse) {
+    .pill,
+    .tap,
+    .tap-y {
+      position: relative;
+    }
+    .btn::after,
+    .pill::after,
+    .tap::after {
+      content: "";
+      position: absolute;
+      inset: min(0px, calc((100% - 44px) / 2));
+    }
+    .tap-y::after {
+      content: "";
+      position: absolute;
+      inset: min(0px, calc((100% - 44px) / 2)) 0;
+    }
+  }
+
   /* Programme modals (native <dialog>). */
   .modal {
     padding: 0;

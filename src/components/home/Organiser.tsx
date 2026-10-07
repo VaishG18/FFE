@@ -64,25 +64,27 @@ export default function Organiser() {
       <div className="ml-[3px] md:ml-0" data-reveal>
         <p className="eyebrow text-accent md:ml-px">ORGANISER</p>
         <h2 className="h-section mt-[18px] md:mt-[20px]">
-          Powered by <span className="text-accent">Messe Berlin.</span>
+          Led by <br className="max-md:hidden" />
+          <span className="text-accent">Messe Berlin Asia Pacific</span>
         </h2>
-        <p className="text-lead mt-[21px] max-w-[567px] md:mt-[24px] lg:mt-[27px] lg:ml-px">
-          Messe Berlin connects people, markets, and industry around the world. With a long-standing commitment to international trade fairs, we
-          create a platform for innovation, businesses, and sustainable clothing
+        <p className="text-lead mt-[21px] max-w-[663px] md:mt-[24px] lg:mt-[22px] lg:ml-px">
+          Being one of the world&apos;s leading trade fair companies with decades of international exhibition expertise and a global network spanning
+          industries and markets, <br className="max-md:hidden" />
+          Messe Berlin Asia Pacific creates professional platforms that bring industries together, facilitate international business and connect markets.
         </p>
       </div>
 
       {/* Wrapper is the size container so the row's own gap can use cqw too. */}
       <div className="ml-[3px] [container-type:inline-size] md:ml-0 md:[container-type:normal]">
       <dl
-        className="mt-[27px] flex items-start gap-x-[3.9cqw] md:mt-10 md:gap-x-[25px] lg:mt-[41px] lg:ml-[2px]"
+        className="mt-[27px] flex items-start gap-x-[3.9cqw] md:mt-10 md:gap-x-[25px] lg:mt-[32px] lg:ml-[2px]"
         data-reveal
         style={{ "--i": 1 } as CSSProperties}
       >
         {STATS.map((s, idx) => (
           <div key={s.n} className="contents">
             {idx > 0 && <span className={`h-[93px] w-px shrink-0 bg-accent/47 md:-mr-px ${idx === 2 ? "md:mr-px" : ""}`} aria-hidden />}
-            <div className={`flex shrink-0 flex-col-reverse pt-[9px] ${s.w}`}>
+            <div className={`flex shrink-0 flex-col-reverse pt-[9px] lg:pt-[6px] ${s.w}`}>
               <dt className={`trim mt-[17px] text-[3.117cqw] leading-[normal] font-medium text-body md:text-[12px] ${s.labelW ?? ""}`}>{s.label}</dt>
               <dd className="trim font-display text-[7.27cqw] leading-[normal] font-semibold tracking-[0.02em] whitespace-nowrap text-accent uppercase md:text-[28px]">
                 <CountUp {...s.count} />
@@ -95,7 +97,7 @@ export default function Organiser() {
 
       {/* Mobile: full-bleed map with the tagline over its lower right (Figma 318:2286).
           xl: map bleeds to the viewport's right edge (359:256 at x=695, w=745). */}
-      <div className="relative mt-[36px] ml-[calc(var(--gutter)*-1)] w-screen md:mt-8 md:ml-0 md:w-auto xl:static">
+      <div className="relative mt-[36px] ml-[calc(var(--gutter)*-1)] w-screen md:mt-8 md:ml-0 md:w-auto xl:static xl:mt-0">
         <div className="xl:absolute xl:top-[13px] xl:right-[calc((100%-100vw)/2)] xl:mt-0 xl:w-[745px]" data-reveal="fade">
           <Image src={worldMap} alt="" aria-hidden sizes="(min-width: 1280px) 745px, 100vw" className="aspect-[440/146] h-auto w-full object-cover md:aspect-[745/248]" />
         </div>
@@ -105,50 +107,58 @@ export default function Organiser() {
         >
           Global Platforms.
           <br />
-          Stronger Industires.
+          Stronger Industries.
           <br />
           Brighter Tomorrows.
         </p>
       </div>
 
-      <div className="mt-[25px] ml-[2px] h-px bg-accent/37 md:mt-10 md:ml-0 md:w-full xl:mt-[57px]" />
+      {/* Line 22 (359:254): 8.88px below the stats rules (Figma 359:255 update). */}
+      <div className="mt-[25px] ml-[2px] h-px bg-accent/37 md:mt-10 md:ml-0 md:w-full xl:mt-[8.88px]" />
 
-      <h2 className="h-section mt-[21px] ml-px md:mt-10 md:ml-0 lg:mt-[42px]" data-reveal>
+      <h2 className="h-section mt-[21px] ml-px md:mt-10 md:ml-0 lg:mt-[29.12px] xl:ml-[3px]" data-reveal>
         Explore our <span className="text-accent">trade shows</span>
       </h2>
-      <ul className="mt-[26px] ml-px grid grid-cols-2 gap-x-[8.2px] gap-y-[12.4px] md:mt-8 md:ml-0 md:gap-6 lg:mt-[41px] lg:grid-cols-4 lg:gap-[22px]">
-        {SHOWS.map((s, idx) => (
-          // Mobile cards (318:2615 etc.) are the desktop card at exactly ×0.619.
-          <li key={s.name} className="[zoom:0.619] md:[zoom:1]" data-reveal style={{ "--i": idx } as CSSProperties}>
-            <a
-              href="#"
-              aria-label={s.name}
-              className="group block rounded-[18px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
-            >
-              <div className="relative aspect-[305/175] overflow-hidden rounded-[18px] bg-[#d9d9d9]">
-                <Image
-                  src={s.img}
-                  alt=""
-                  placeholder="blur"
-                  sizes="(min-width: 1024px) 305px, 50vw"
-                  className="zoom absolute inset-0 size-full object-cover"
-                />
-              </div>
-              <div
-                className="relative -mt-[31px] ml-[13.1px] flex h-[62px] w-[88.2%] items-center justify-between rounded-[18px] bg-sun pr-[12px] md:mx-auto"
-                style={{ paddingLeft: s.logoX }}
-              >
-                {s.logo}
-                <Image
-                  src={arrowCircle}
-                  alt=""
-                  className="shrink-0 transition-transform duration-(--dur-ui) ease-(--ease-out) group-hover:translate-x-[3px]"
-                />
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <ShowCards />
     </section>
+  );
+}
+
+/** "Explore our trade shows" cards (homepage 359:400; reused on Messe Berlin 914:1625). `className` = the list's margins. */
+export function ShowCards({ className = "mt-[26px] ml-px md:mt-8 md:ml-0 lg:mt-[41px] xl:ml-[3px]" }: { className?: string }) {
+  return (
+    <ul className={`grid grid-cols-2 gap-x-[8.2px] gap-y-[12.4px] md:gap-6 lg:grid-cols-4 lg:gap-[22px] ${className}`}>
+      {SHOWS.map((s, idx) => (
+        // Mobile cards (318:2615 etc.) are the desktop card at exactly ×0.619.
+        <li key={s.name} className="[zoom:0.619] md:[zoom:1]" data-reveal style={{ "--i": idx } as CSSProperties}>
+          <a
+            href="#"
+            aria-label={s.name}
+            className="group block rounded-[18px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
+          >
+            <div className="relative aspect-[305/175] overflow-hidden rounded-[18px] bg-[#d9d9d9]">
+              <Image
+                src={s.img}
+                alt=""
+                placeholder="blur"
+                sizes="(min-width: 1024px) 305px, 50vw"
+                className="zoom absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div
+              className="relative -mt-[31px] ml-[13.1px] flex h-[62px] w-[88.2%] items-center justify-between rounded-[18px] bg-sun pr-[12px] md:mx-auto"
+              style={{ paddingLeft: s.logoX }}
+            >
+              {s.logo}
+              <Image
+                src={arrowCircle}
+                alt=""
+                className="shrink-0 transition-transform duration-(--dur-ui) ease-(--ease-out) group-hover:translate-x-[3px]"
+              />
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }

@@ -83,20 +83,19 @@ export function Button({ href, children, chevron, w, h, pl, gap, fs = 18, classN
 }
 
 /** Date + venue block with the white rule (hero + join banner). */
-export function DateVenue({ className = "", style, date = "17-18 Nov. 2027" }: { className?: string; style?: CSSProperties; date?: string }) {
-  const rows = [
-    { icon: calendar, text: date },
-    { icon: location, text: "Sands Expo & Convention Centre, Singapore" },
-  ];
+/** `date={false}` = venue row only (Who Should Visit 789:3778: 46px rule, row 12px from its top). */
+export function DateVenue({ className = "", style, date = "17-18 Nov. 2027" }: { className?: string; style?: CSSProperties; date?: string | false }) {
+  const venue = { icon: location, text: "Sands Expo & Convention Centre, Singapore" };
+  const rows = date ? [{ icon: calendar, text: date }, venue] : [venue];
   return (
     // Mobile (Figma 318:1802): 60px rule, 17/16px icons, 17px copy wrapping at 239px, top-aligned rows.
     <ul
-      className={`relative flex flex-col gap-[10px] pt-[8px] pl-[16px] before:absolute before:top-0 before:left-0 before:h-[60px] before:w-[5px] before:bg-white md:gap-[12px] md:border-l-[5px] md:border-white md:py-[9px] md:pl-[11px] md:before:hidden ${className}`}
+      className={`relative flex flex-col gap-[10px] pt-[8px] pl-[16px] before:absolute before:top-0 before:left-0 before:w-[5px] before:bg-white md:gap-[12px] md:border-l-[5px] md:border-white md:pl-[11px] md:before:hidden ${date ? "before:h-[60px] md:py-[9px]" : "before:h-[44px] md:pt-[12px] md:pb-[11px]"} ${className}`}
       style={style}
     >
-      {rows.map((r, i) => (
+      {rows.map((r) => (
         <li key={r.text} className="flex items-start gap-[11px] font-medium tracking-[0.02em] text-white md:h-[23px] md:items-center">
-          <Image src={r.icon} alt="" className={`shrink-0 md:mr-0 md:size-[23px] ${i ? "mr-px size-[16px]" : "size-[17px]"}`} />
+          <Image src={r.icon} alt="" className={`shrink-0 md:mr-0 md:size-[23px] ${r.icon === location ? "mr-px size-[16px]" : "size-[17px]"}`} />
           <span className="mt-[2px] block max-w-[239px] text-[17px] leading-[21px] [text-box:trim-both_cap_alphabetic] md:mt-0 md:max-w-none md:text-[22px] md:leading-[31px] md:[text-box:normal]">
             {r.text}
           </span>
@@ -151,11 +150,25 @@ export const box = (W: number, H: number, l: number, t: number, w: number, h: nu
 
 export const COUNTRIES = ["Singapore", "Australia", "China", "Hong Kong", "India", "Indonesia", "Japan", "Malaysia", "New Zealand", "Philippines", "South Korea", "Thailand", "Vietnam", "Other"];
 
-/** Form field: 14px label (red * when required) above its control. Figma gap is 7 (About) or 8 (Contact). */
-export function FormField({ label, required, gap, className = "", children }: { label: string; required?: boolean; gap: number; className?: string; children: ReactNode }) {
+/** Form field: 14px label (red * when required) above its control. Figma gap is 7 (About) or 8 (Contact). Apply to Exhibit uses 15/19 labels (`labelCls`). */
+export function FormField({
+  label,
+  required,
+  gap,
+  className = "",
+  labelCls = "text-[14px] leading-[18px]",
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  gap: number;
+  className?: string;
+  labelCls?: string;
+  children: ReactNode;
+}) {
   return (
     <label className={`flex min-w-0 flex-col ${className}`} style={{ gap }}>
-      <span className="text-[14px] leading-[18px] font-medium text-black">
+      <span className={`font-medium text-black ${labelCls}`}>
         {label}
         {required && <span className="text-[#e4051f]"> *</span>}
       </span>

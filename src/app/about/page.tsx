@@ -17,7 +17,7 @@ import JoinCommunity from "@/components/about/JoinCommunity";
 export const metadata: Metadata = {
   title: "About | Fresh Food Expo APAC",
   description:
-    "Fresh Food Expo APAC is a premier B2B trade fair connecting the fresh food ecosystem across the source-to-market value chain. 17–18 November 2027, Sands Expo & Convention Centre, Singapore.",
+    "Fresh Food Expo APAC is a premier B2B trade fair connecting the fresh food ecosystem across the source-to-market value chain. 16–18 November 2027, Sands Expo & Convention Centre, Singapore.",
 };
 
 /** Figma 736:2133 (About_Us_Desktop_v2). Sections sit 46px apart, as in the frame. */
@@ -26,7 +26,7 @@ export default function AboutPage() {
     <>
       <Header />
       <main className="overflow-x-clip">
-        {/* Figma 736:2149. Date reads 16-18 here in Figma; 17–18 elsewhere on the page. */}
+        {/* Figma 736:2149 (content per revision 449:1564). */}
         <PageHero eyebrow="The event" title="Fresh Food Expo APAC" img={hero} imgBox="lg:top-[-0.09%] lg:left-[36.93%] lg:w-[63.04%]" date="16-18 Nov. 2027" stayHref="#community">
           A premier B2B trade fair connecting the fresh food ecosystem across the source-to-market value chain.
         </PageHero>

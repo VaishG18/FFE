@@ -151,7 +151,7 @@ export default function Header() {
         }`}
       >
         <div className="container-page flex h-(--header-h) items-center justify-between lg:items-start lg:pt-[17px]">
-          <Link href="/" aria-label="Fresh Food Expo Asia Pacific — home" className="shrink-0">
+          <Link href="/" aria-label="Fresh Food Expo Asia Pacific — home" className="tap shrink-0">
             <Image src={logo} alt="Fresh Food Expo Asia Pacific" sizes="131px" preload className="hidden h-[90px] w-[131px] object-cover object-right lg:block" />
             {/* Compact "FFE" mark below lg (Figma 318:1795, 79×42 crop). */}
             <span className="relative block h-[42px] w-[79px] overflow-hidden lg:hidden">

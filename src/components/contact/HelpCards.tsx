@@ -15,7 +15,7 @@ const CARDS: { title: string; desc: string; icon: StaticImageData; tall?: boolea
 /** Figma 736:2743: heading + four 299px cards (justify-between column, 24px apart). */
 export default function HelpCards() {
   return (
-    <section className="untrim container-narrow mt-[48px] lg:mt-[65px]">
+    <section className="untrim container-narrow mt-[48px] lg:mt-[66px]">
       <div className="flex flex-col items-start gap-[14px]" data-reveal>
         <p className="text-[15px] leading-[19px] font-medium tracking-[0.02em] text-accent uppercase">How can we help?</p>
         <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[40px] md:leading-[46px] lg:text-[48px] lg:leading-[54px]">

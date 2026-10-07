@@ -20,7 +20,7 @@ export default function SourceToMarket() {
           From <span className="text-accent">Fresh Food</span> to Market.
         </h2>
         <p className="mt-[14px] max-w-[780px] text-[17px] leading-[23px] font-medium text-body md:text-[18px]">
-          FFE APAC connects fresh food with the technologies and logistics solutions that help maintain quality, preserve freshness and move products
+          Fresh Food Expo APAC connects fresh food with the technologies and logistics solutions that help maintain quality, preserve freshness and move products
           efficiently through the supply chain.
         </p>
       </div>

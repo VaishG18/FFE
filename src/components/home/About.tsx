@@ -1,5 +1,5 @@
 import Image from "next/image";
-import about from "@/assets/about.jpg";
+import about from "@/assets/about-hall.jpg";
 import aboutCurve from "@/assets/about-curve.svg";
 import aboutCurveMobile from "@/assets/about-curve-mobile.svg";
 import chevronAccent from "@/assets/chevron-accent.svg";
@@ -15,11 +15,11 @@ export default function About() {
           <span className="text-accent md:block">Fresh Food Expo APAC</span>
         </h2>
         <p className="text-lead mt-[24px] ml-[2px] max-w-[586px] md:mt-[28px] md:ml-0 lg:mt-[38px]">
-          <b className="font-medium md:font-bold">Fresh Food Expo APAC</b> is a premier B2B trade fair connecting fresh food with the technologies, logistics and
+          Fresh Food Expo APAC is a premier B2B trade fair connecting fresh food with the technologies, logistics and
           distribution solutions that help preserve quality, maintain freshness and move products efficiently to market.
           <br />
           <br />
-          Building on the global expertise and industry network behind <b className="font-bold">FRUIT LOGISTICA</b>, Fresh Food Expo APAC brings
+          Building on the global expertise and industry network behind FRUIT LOGISTICA, Fresh Food Expo APAC brings
           together fresh food, agri and fresh technology, logistics and distribution within one regional platform
         </p>
         <div className="mt-[18px] flex flex-wrap gap-[7px] md:mt-[32px] md:gap-[12px] lg:ml-px">
@@ -57,10 +57,11 @@ export default function About() {
         <div className="relative aspect-[388/296] overflow-hidden rounded-[18.2px] bg-[#d9d9d9] md:aspect-[559.7/425.6] md:rounded-[30.47px] md:rounded-bl-none">
           <Image
             src={about}
-            alt="Guests and dignitaries gathered on stage at a Messe Berlin trade fair opening"
+            alt="Visitors filling a market hall with Norwegian and Swedish stands at a Messe Berlin trade fair"
             placeholder="blur"
             sizes="(min-width: 1024px) 750px, 134vw"
-            style={crop(133.93, 100, 0.06, 0.21)}
+            // Fill 159.81% × 121.2% at (−34.54%, −7.91%): the photo’s true ratio.
+            style={crop(159.81, 121.2, -34.54, -7.91)}
           />
         </div>
       </div>

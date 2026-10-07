@@ -9,7 +9,7 @@ import { Button } from "../ui";
 // Button gaps put the chevron where Figma has it (label widths measured in Outfit 500/18px).
 const CARDS: { title: string; desc: string; tags: string; img: ReactNode; pl: string; gap: string; buttons: ReactNode }[] = [
   {
-    title: "Visit",
+    title: "Visitors",
     desc: "For Buyers and industry professionals seeking new fresh food products, suppliers, technologies, solutions and business partners.",
     tags: "Wholesalers | Importers | Retailers | Food Service Operators...",
     img: <Image src={visit} alt="Visitors walking through a busy exhibition hall" placeholder="blur" sizes="(min-width: 1024px) 622px, 100vw" className="zoom absolute inset-0 size-full object-cover" />,

@@ -32,7 +32,7 @@ export default function Siaw() {
         </div>
         <div className="lg:basis-[622px] lg:pt-[16px]" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
           <p className="text-lead max-w-[361px] md:max-w-[620px] lg:ml-[2px]">
-            <b className="font-medium md:font-bold">Fresh Food Expo APAC</b> is part of Singapore International Agri-Food Week (SIAW) 2027, bringing
+            Fresh Food Expo APAC is part of Singapore International Agri-Food Week (SIAW) 2027, bringing
             together government, industry, innovation and business to advance a more sustainable, resilient and connected food future in Asia.
             <br />
             <br />
