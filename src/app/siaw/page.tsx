@@ -36,7 +36,8 @@ export default function SiawPage() {
           imgBox="lg:top-0 lg:left-[34.19%] lg:w-[65.81%]"
           cta={
             <Button href="#" chevron={chevronAccent} w={497} h={52} pl={33} gap={9} className="bg-white text-accent">
-              Discover Singapore International Agri-Food Week
+              <span className="md:hidden">Discover SIAW 2027</span>
+              <span className="max-md:hidden">Discover Singapore International Agri-Food Week</span>
             </Button>
           }
         >

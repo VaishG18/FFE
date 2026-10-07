@@ -55,9 +55,9 @@ export default function EventIntro() {
               <div className="absolute top-0 right-0 w-[119px] overflow-hidden rounded-tl-[75px] rounded-tr-[15px] rounded-br-[75px] bg-[#d9d9d9]" style={{ height: c.imgH }}>
                 <Image src={c.img} alt={c.alt} placeholder="blur" sizes="240px" className="zoom size-full object-cover" />
               </div>
-              {/* Bar 736:2218 (4×37, round caps) at x22; title cap top 8px below it. */}
+              {/* Bar 736:2218 (4×37, round caps) at x22; title cap top 8px below it. Grows with a wrapped title. */}
               <div className="relative min-h-[37px] pt-[8px]">
-                <span className="absolute top-0 left-0 h-[37px] w-[4px] rounded-full bg-accent" aria-hidden />
+                <span className="absolute inset-y-0 left-0 w-[4px] rounded-full bg-accent" aria-hidden />
                 <h3 className="trim font-display text-[22px] leading-[1.2] font-semibold text-accent md:text-[25px] md:leading-[normal]" style={{ marginLeft: c.titleX - 22 }}>
                   {c.title}
                 </h3>

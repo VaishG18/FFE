@@ -21,20 +21,17 @@ export default function SendMessage() {
 
         <aside className="relative flex flex-col gap-[26px] overflow-hidden bg-linear-to-b from-mint to-page px-[22px] pt-[32px] pb-[352px] md:px-[44px] md:pt-[52px] lg:w-[360px] lg:shrink-0 xl:w-[440px]">
           <div className="flex flex-col gap-[10px]">
-            <h2 className="font-display text-[26px] leading-[32px] font-semibold text-forest md:text-[28px] md:leading-[34px]">Other Ways to Reach Us</h2>
+            <h2 className="font-display text-[26px] leading-[32px] font-semibold text-balance text-forest max-[400px]:text-[24px] md:text-[28px] md:leading-[34px]">Other Ways to Reach Us</h2>
             <p className="text-[15px] leading-[22px] font-medium text-body">You can also contact us directly using the details below.</p>
           </div>
-          <a href={`mailto:${EMAIL}`} className="group flex items-start gap-[18px]">
+          <a href={`mailto:${EMAIL}`} className="group flex items-start gap-[18px] max-[479px]:flex-col max-[479px]:gap-[14px]">
             <span className="flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white drop-shadow-[0_12px_16px_rgb(3_41_26/0.1)] transition-transform duration-(--dur-ui) ease-(--ease-out) group-hover:-translate-y-[3px]">
               <Image src={mail} alt="" className="size-[24px]" />
             </span>
             <span className="flex min-w-0 flex-col gap-[6px] pt-[2px] text-[15px] leading-[21px]">
               <span className="text-[16px] font-semibold text-forest">General Enquiries</span>
-              <span className="font-medium text-body transition-colors duration-(--dur-ui) group-hover:text-accent">
-                {/* Wrap after "@" on narrow screens instead of mid-word. */}
-                {EMAIL.split("@")[0]}@<wbr />
-                {EMAIL.split("@")[1]}
-              </span>
+              {/* One line; the icon stacks above on small phones so the address gets the full width. */}
+              <span className="font-medium [overflow-wrap:anywhere] text-body transition-colors duration-(--dur-ui) group-hover:text-accent">{EMAIL}</span>
             </span>
           </a>
 

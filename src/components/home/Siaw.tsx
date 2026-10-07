@@ -47,10 +47,11 @@ export default function Siaw() {
               h={52}
               pl={28}
               gap={16.66}
-              m={{ w: 368, h: 74, pl: 34, gap: 12, fs: 18, lh: 25, tw: 275, inline: true, chev: 0.828 }}
               className="border-[1.5px] border-accent bg-mint text-accent"
             >
-              Discover Singapore International Agri-Food Week
+              {/* Phones: short one-line label (the full name wraps to 3 lines in a pill). */}
+              <span className="md:hidden">Discover SIAW 2027</span>
+              <span className="max-md:hidden">Discover Singapore International Agri-Food Week</span>
             </Button>
           </div>
         </div>

@@ -39,7 +39,7 @@ export function Venue() {
         <div className="flex min-w-0 flex-1 flex-col items-start gap-[16px]" data-reveal style={i(1)}>
           <RuleEyebrow>Getting to the venue</RuleEyebrow>
           <h2 className="font-display text-[28px] leading-[34px] font-semibold text-forest md:text-[32px] md:leading-[40px]">
-            Sands Expo &amp; Convention Centre (Hall D)
+            Sands Expo &amp; Convention Centre <span className="whitespace-nowrap">(Hall D)</span>
           </h2>
           <p className="text-[15px] leading-[24px] font-medium text-black md:text-[16px] md:leading-[25px]">
             Located in the heart of Singapore’s Marina Bay precinct, Sands Expo &amp; Convention Centre is one of Asia’s premier venues for
@@ -137,8 +137,7 @@ export function Resources() {
     <section className="untrim mt-[48px] lg:mt-[40px]">
       <h2 className="mx-auto w-[min(1360px,100%-2*var(--gutter))] md:flex md:items-center md:gap-[16px]" data-reveal>
         <span className="font-display text-[28px] leading-[34px] font-semibold text-forest md:text-[32px] md:leading-[38px]">
-          Additional{" "}
-          {/* Phones: the rule stays on the last word's line. From md it's a flex sibling, centred as in Figma. */}
+          Additional {/* Phones: the rule stays on the last word's line. From md it's a flex sibling, centred as in Figma. */}
           <span className="whitespace-nowrap">
             Resources
             <span aria-hidden className="ml-[16px] inline-block h-[2px] w-[36px] rounded-[1px] bg-accent align-middle md:hidden" />

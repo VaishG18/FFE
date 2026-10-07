@@ -88,9 +88,9 @@ export function DateVenue({ className = "", style, date = "17-18 Nov. 2027" }: {
   const venue = { icon: location, text: "Sands Expo & Convention Centre, Singapore" };
   const rows = date ? [{ icon: calendar, text: date }, venue] : [venue];
   return (
-    // Mobile (Figma 318:1802): 60px rule, 17/16px icons, 17px copy wrapping at 239px, top-aligned rows.
+    // Mobile (Figma 318:1802): 5px rule (full block height, so it spans a wrapped venue), 17/16px icons, 17px copy wrapping at 239px, top-aligned rows.
     <ul
-      className={`relative flex flex-col gap-[10px] pt-[8px] pl-[16px] before:absolute before:top-0 before:left-0 before:w-[5px] before:bg-white md:gap-[12px] md:border-l-[5px] md:border-white md:pl-[11px] md:before:hidden ${date ? "before:h-[60px] md:py-[9px]" : "before:h-[44px] md:pt-[12px] md:pb-[11px]"} ${className}`}
+      className={`relative flex flex-col gap-[10px] pt-[8px] pl-[16px] before:absolute before:inset-y-0 before:left-0 before:w-[5px] before:bg-white md:gap-[12px] md:border-l-[5px] md:border-white md:pl-[11px] md:before:hidden ${date ? "md:py-[9px]" : "md:pt-[12px] md:pb-[11px]"} ${className}`}
       style={style}
     >
       {rows.map((r) => (

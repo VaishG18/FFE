@@ -86,13 +86,10 @@ export default function Enquiry() {
             </span>
           </li>
           <li>
-            <a href={`mailto:${EMAIL}`} className="tap-y flex items-center gap-[12px] transition-colors duration-(--dur-ui) hover:text-accent">
+            <a href={`mailto:${EMAIL}`} className="tap-y flex items-center gap-[12px] max-[389px]:gap-[8px] transition-colors duration-(--dur-ui) hover:text-accent">
               <Image src={pin} alt="" className="size-[24px] shrink-0" />
-              {/* Wrap after "@" on narrow screens instead of mid-word. */}
-              <span className="min-w-0">
-                {EMAIL.split("@")[0]}@<wbr />
-                {EMAIL.split("@")[1]}
-              </span>
+              {/* One line on phones (15px, 14px + tighter gap under 390px); wraps only if it truly can’t fit. */}
+              <span className="min-w-0 [overflow-wrap:anywhere] max-md:text-[15px] max-[389px]:text-[14px]!">{EMAIL}</span>
             </a>
           </li>
         </ul>
