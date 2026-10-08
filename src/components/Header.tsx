@@ -141,7 +141,8 @@ function MegaPanel({ s, i, on }: { s: NavSection; i: number; on: boolean }) {
 }
 
 export default function Header() {
-  const pathname = usePathname();
+  // trailingSlash: true serves /why-visit/, while nav hrefs have no trailing slash.
+  const pathname = usePathname().replace(/(.)\/$/, "$1");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   // Desktop mega menu: index of the open section. Hover opens after a short intent delay and
@@ -295,20 +296,44 @@ export default function Header() {
             open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
-          <nav aria-label="Mobile" className="container-wide rounded-[24px] bg-white p-3 shadow-[0_24px_48px_-24px_rgb(2_93_3/0.35)]">
-            <ul className="font-display text-[19px] font-medium uppercase tracking-[0.02em] text-ink">
-              {NAV.map((n) => (
-                <li key={n.label}>
-                  <Link
-                    href={n.href}
-                    aria-current={n.links.some((l) => l.href === pathname) ? "page" : undefined}
-                    onClick={() => setOpen(false)}
-                    className="flex min-h-12 items-center rounded-2xl px-4 transition-colors hover:bg-mint aria-[current]:text-forest"
-                  >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
+          {/* Scrolls inside itself on short phones (About alone has six pages); 60px = 44px top bar + 16px gap. */}
+          <nav
+            aria-label="Mobile"
+            className="container-wide max-h-[calc(100dvh-var(--header-h)-60px)] overflow-y-auto overscroll-contain rounded-[24px] bg-white p-3 shadow-[0_24px_48px_-24px_rgb(2_93_3/0.35)]"
+          >
+            {/* Exclusive accordion (shared name): one section open at a time, the current page’s section open by default. */}
+            <ul>
+              {NAV.map((n) => {
+                const here = n.links.some((l) => l.href === pathname);
+                return (
+                  <li key={n.label}>
+                    <details name="mobile-nav" open={here} className="group">
+                      <summary
+                        className={`flex min-h-12 cursor-pointer list-none items-center justify-between rounded-2xl px-4 font-display text-[19px] font-medium tracking-[0.02em] uppercase transition-colors group-open:text-forest hover:bg-mint [&::-webkit-details-marker]:hidden ${
+                          here ? "text-forest" : "text-ink"
+                        }`}
+                      >
+                        {n.label}
+                        <Caret className="transition-transform duration-(--dur-ui) ease-(--ease-out) group-open:rotate-180" />
+                      </summary>
+                      <ul className="mb-2 ml-4 border-l-2 border-mint pl-2">
+                        {n.links.map((l) => (
+                          <li key={l.label}>
+                            <Link
+                              href={l.href}
+                              aria-current={l.href === pathname ? "page" : undefined}
+                              onClick={() => setOpen(false)}
+                              className="flex min-h-11 items-center rounded-xl px-3 text-[16px] font-medium text-body transition-colors hover:bg-mint aria-[current]:font-semibold aria-[current]:text-forest"
+                            >
+                              {l.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                );
+              })}
             </ul>
             {/* Utility links that don't fit the mobile bar. */}
             <ul className="mt-2 flex border-t border-black/10 pt-2 text-[16px] font-medium text-body">

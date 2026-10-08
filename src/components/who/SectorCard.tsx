@@ -33,7 +33,7 @@ export default function SectorCard({ title, lead, icon, items, tiles, tileH, tex
           <Image src={img} alt={alt} placeholder="blur" sizes="(min-width: 1280px) 560px, 100vw" className={`zoom absolute inset-0 size-full object-cover ${pos}`} />
         </div>
 
-        <div className={`flex min-w-0 flex-1 flex-col items-start gap-[20px] px-[4px] pb-[8px] md:px-[8px] lg:py-[16px] ${flip ? "lg:pr-0 lg:pl-[24px]" : "lg:pr-[24px] lg:pl-0"}`} data-reveal style={{ "--i": 1 } as CSSProperties}>
+        <div className={`flex min-w-0 flex-1 flex-col items-start gap-[20px] pb-[8px] sm:px-[4px] md:px-[8px] lg:py-[16px] ${flip ? "lg:pr-0 lg:pl-[24px]" : "lg:pr-[24px] lg:pl-0"}`} data-reveal style={{ "--i": 1 } as CSSProperties}>
           <div className="flex w-full flex-col items-start gap-[16px] sm:flex-row sm:items-center sm:gap-[24px]">
             <span className="grid size-[64px] shrink-0 place-items-center rounded-full bg-mint md:size-[76px]">
               <Image src={icon} alt="" />
@@ -44,7 +44,7 @@ export default function SectorCard({ title, lead, icon, items, tiles, tileH, tex
             </div>
           </div>
 
-          <ul className={`grid w-full gap-[8px] ${tiles === "stack" ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5" : "grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"}`}>
+          <ul className={`grid w-full gap-[8px] ${tiles === "stack" ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"}`}>
             {items.map((it) =>
               tiles === "stack" ? (
                 <li key={it.label} className={`flex flex-col items-center gap-[10px] rounded-[14px] border border-accent bg-mint px-[10px] py-[16px] text-center ${tileH}`}>
@@ -52,9 +52,9 @@ export default function SectorCard({ title, lead, icon, items, tiles, tileH, tex
                   <span className="text-[13px] leading-[17px] font-medium whitespace-pre-line text-accent">{it.label}</span>
                 </li>
               ) : (
-                <li key={it.label} className={`flex items-center gap-[12px] rounded-[14px] border border-accent bg-mint p-[14px] ${tileH}`}>
+                <li key={it.label} className={`flex items-center gap-[12px] rounded-[14px] border border-accent bg-mint p-[14px] max-sm:gap-[10px] max-sm:px-[10px] ${tileH} max-sm:min-h-0!`}>
                   <Image src={it.icon} alt="" className="shrink-0" />
-                  <span className="min-w-0 flex-1 text-[13px] leading-[17px] font-medium whitespace-pre-line text-accent">{it.label}</span>
+                  <span className="min-w-0 flex-1 text-[13px] leading-[17px] font-medium whitespace-pre-line text-accent max-sm:whitespace-normal">{it.label}</span>
                 </li>
               ),
             )}
