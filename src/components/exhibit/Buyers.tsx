@@ -21,9 +21,9 @@ const BUYERS: { label: string; icon: StaticImageData; w?: string }[] = [
   { label: "Wholesalers", icon: store },
   { label: "Retailers", icon: cart },
   { label: "Foodservice\nOperators", icon: utensils },
-  { label: "Procurement &\nSourcing Professionals", icon: users, w: "md:max-w-[101px]" },
+  { label: "Procurement &\nSourcing", icon: users, w: "md:max-w-[101px]" },
   { label: "Traders", icon: globe },
-  { label: "E-commerce &\nGrocery Platforms", icon: monitor },
+  { label: "E-commerce &\nGrocery", icon: monitor },
 ];
 
 /** Figma 777:739: 800px copy with the buyer-type grid, 40px gap, 440×520 photo pair. */
@@ -33,7 +33,7 @@ export default function Buyers() {
       <div className="flex min-w-0 flex-1 flex-col items-start gap-[16px]" data-reveal>
         {/* Figma's text box is 37px for a 46px line, so the copy below sits 9px higher. */}
         <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[36px] md:leading-[44px] lg:text-[38px] lg:leading-[46px] xl:h-[37px]">
-          Connect with the buyers <span className="text-accent">that matter.</span>
+          Connect with the buyers that matter.
         </h2>
         <p className="text-[17px] leading-[24px] font-medium text-body md:text-[18px] md:leading-[26px]">
           Meet professionals responsible for sourcing, procurement, distribution and purchasing across the fresh food industry.

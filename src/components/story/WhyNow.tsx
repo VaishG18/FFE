@@ -11,7 +11,7 @@ import RuleEyebrow from "./RuleEyebrow";
 // Source lines are Inter SemiBold Italic in Figma (the only Inter on the site).
 const inter = Inter({ subsets: ["latin"], weight: "600", style: "italic" });
 
-type Fact = { title: string; text: ReactNode; source: string; img: StaticImageData; alt: string; pos: string; srcTop: string; box: string };
+type Fact = { title: string; text: ReactNode; source: string; href: string; img: StaticImageData; alt: string; pos: string; srcTop: string; box: string };
 
 // Figma 777:481 / 914:1231 (628×236, sitting 7.68 / 8px down a 250px row).
 const FACTS: Fact[] = [
@@ -23,6 +23,7 @@ const FACTS: Fact[] = [
       </>
     ),
     source: "Source: FAO — The State of the World’s Land and Water Resources for Food and Agriculture 2025",
+    href: "https://doi.org/10.4060/cd7488en",
     img: broccoli,
     alt: "Broccoli heads in a wooden market crate",
     // Fill 162.19% wide at −60.96% → cover, 98% across.
@@ -34,6 +35,7 @@ const FACTS: Fact[] = [
     title: "13.3% of food",
     text: "Is lost globally after harvest and before reaching retail, including during transport, storage, wholesale and processing.",
     source: "Source: UNEP & FAO — Sustainable Food Cold Chains: Opportunities, Challenges and the Way Forward",
+    href: "https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/1231-global-food-losses",
     img: tomatoes,
     alt: "Vine tomatoes on a blue conveyor",
     // Fill 176.3% wide at −40.63% → cover, 53.3% across.
@@ -71,7 +73,7 @@ export default function WhyNow() {
                 <div className="flex flex-col items-start gap-[10px] xl:w-[398px]">
                   <h3 className="font-display text-[30px] leading-[36px] font-semibold text-accent md:text-[34px] md:leading-[40px]">{f.title}</h3>
                   <p className="text-[15px] leading-[24px] font-medium text-body">{f.text}</p>
-                  <Button href="#" chevron={chevronSmWhite} w={160} h={40} pl={19} gap={5.28} fs={15} className="border border-accent bg-accent text-white">
+                  <Button href={f.href} chevron={chevronSmWhite} w={160} h={40} pl={19} gap={5.28} fs={15} className="border border-accent bg-accent text-white">
                     Read the report
                   </Button>
                 </div>

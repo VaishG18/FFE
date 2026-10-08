@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Header from "@/components/Header";
 import RevealObserver from "@/components/RevealObserver";
 import Footer from "@/components/home/Footer";
-import PageHero, { HeroCtas } from "@/components/PageHero";
+import PageHero, { HeroCtas, HeroVenue } from "@/components/PageHero";
 import JoinBanner from "@/components/home/JoinBanner";
 import Buyers from "@/components/exhibit/Buyers";
 import Grow from "@/components/exhibit/Grow";
 import Showcase from "@/components/exhibit/Showcase";
 import Elevate from "@/components/exhibit/Elevate";
 import hero from "@/assets/exhibit/hero.jpg";
-import calendar from "@/assets/exhibit/icon-calendar.svg";
-import pin from "@/assets/exhibit/icon-pin.svg";
 
 export const metadata: Metadata = {
   title: "Why Exhibit | Fresh Food Expo APAC",
   description:
     "Put your business in front of the buyers, partners and decision-makers shaping Asia Pacific’s fresh food ecosystem. 16–18 November 2027, Sands Expo & Convention Centre, Singapore.",
 };
-
-const VENUE = [
-  { icon: calendar, text: "16–18 November 2027" },
-  { icon: pin, text: "Sands Expo & Convention Centre, Singapore" },
-];
 
 /** Figma 777:689 (Why_Exhibit_Desktop). Sections sit 72px apart. */
 export default function WhyExhibitPage() {
@@ -39,15 +31,7 @@ export default function WhyExhibitPage() {
           curveLeft={4.37}
           cta={
             <>
-              {/* Date & Venue (786:3088): 24px icons, 12px gap, 18/23 semibold, rows 10px apart, 4px padding. */}
-              <ul className="flex flex-col gap-[10px] py-[4px] lg:ml-[4px]">
-                {VENUE.map((v) => (
-                  <li key={v.text} className="flex items-center gap-[12px]">
-                    <Image src={v.icon} alt="" className="shrink-0" />
-                    <span className="text-[17px] leading-[23px] font-semibold text-white md:text-[18px]">{v.text}</span>
-                  </li>
-                ))}
-              </ul>
+              <HeroVenue />
               <HeroCtas stayHref="/subscribe" className="mt-[24px] md:mt-[29px]" />
             </>
           }

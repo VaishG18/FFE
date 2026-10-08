@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fredoka, Outfit } from "next/font/google";
 import "./globals.css";
+import LaunchPopup from "@/components/LaunchPopup";
 
 const outfit = Outfit({ variable: "--font-outfit", subsets: ["latin"] });
 const fredoka = Fredoka({ variable: "--font-fredoka", subsets: ["latin"] });
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealBoot }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <LaunchPopup />
+      </body>
     </html>
   );
 }

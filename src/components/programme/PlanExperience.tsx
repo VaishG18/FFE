@@ -30,7 +30,7 @@ export default function PlanExperience() {
           {STATS.map((s, idx) => (
             <li
               key={s.label.join(" ")}
-              className="lift flex h-[124px] flex-col items-center gap-[12px] rounded-[18px] bg-white px-[12px] py-[20px] text-center xl:w-[140px]"
+              className="flex h-[124px] flex-col items-center gap-[12px] rounded-[18px] bg-white px-[12px] py-[20px] text-center xl:w-[140px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px]"
               data-reveal
               style={{ "--i": idx } as CSSProperties}
             >

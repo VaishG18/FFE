@@ -54,7 +54,7 @@ const GROUPS: Group[] = [
 /** Visitor groups (781:2102): 2×2 cards, 24px gaps, 1360px row (40px sides at 1440). */
 export default function VisitorGroups() {
   return (
-    <section className="untrim mx-auto mt-[24px] grid w-[min(1360px,100%-2*var(--gutter))] gap-[24px] lg:mt-[25.32px] lg:grid-cols-2">
+    <section className="untrim mx-auto mt-[24px] grid w-[min(1360px,100%-2*var(--gutter))] gap-[24px] lg:grid-cols-2">
       {GROUPS.map((g, n) => (
         <article
           key={g.title[0]}
@@ -70,7 +70,7 @@ export default function VisitorGroups() {
               <h2 className="font-display text-[26px] leading-[30px] font-semibold text-forest md:text-[30px] md:leading-[34px]">
                 {g.title[0]}
                 <br />
-                <span className="text-accent">{g.title[1]}</span>
+                {g.title[1]}
               </h2>
               {/* Figma's strings verbatim (pre-wrapped "  ·  "); cards 1–2 break where Figma does at full width. */}
               <p className="text-[15px] leading-[23px] font-medium whitespace-pre-wrap text-black">

@@ -48,7 +48,7 @@ const CARDS: Card[] = [
 /** Figma 453:4699: header, three 332px cards with 18px arrows (12px gaps), closing line, CTA. */
 export default function OurRole() {
   return (
-    <section className="untrim container-narrow mt-[48px] flex flex-col items-start gap-[16px] lg:mt-[65px]">
+    <section id="our-role" className="untrim container-narrow mt-[48px] flex flex-col items-start gap-[16px] lg:mt-[65px]">
       <div className="flex flex-col items-start gap-[16px]" data-reveal>
         <p className="text-[15px] leading-[19px] font-medium tracking-[0.02em] text-accent uppercase">Our role</p>
         <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[40px] md:leading-[46px] lg:text-[44px] lg:leading-[50px]">
@@ -89,7 +89,7 @@ export default function OurRole() {
         stakeholders to source, discover, connect and build new partnerships.
       </p>
       <div className="pt-[8px]" data-reveal>
-        <Pill href="/#ecosystem" className="bg-accent text-white max-md:px-[18px]">
+        <Pill href="/ecosystem" className="bg-accent text-white max-md:px-[18px]">
           Explore the Fresh Food Ecosystem
         </Pill>
       </div>

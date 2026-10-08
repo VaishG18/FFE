@@ -1,25 +1,17 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Header from "@/components/Header";
 import RevealObserver from "@/components/RevealObserver";
 import Footer from "@/components/home/Footer";
-import PageHero, { HeroCtas } from "@/components/PageHero";
+import PageHero, { HeroCtas, HeroVenue } from "@/components/PageHero";
 import JoinBanner from "@/components/home/JoinBanner";
 import { Connections, Intro, Products, Technologies } from "@/components/why/Sections";
 import hero from "@/assets/about/hero.jpg";
-import calendar from "@/assets/exhibit/icon-calendar.svg";
-import pin from "@/assets/exhibit/icon-pin.svg";
 
 export const metadata: Metadata = {
   title: "Why Visit | Fresh Food Expo APAC",
   description:
     "Fresh Food Expo APAC brings together suppliers, solution providers and industry professionals in one dedicated B2B platform – giving visitors direct access to new products, partners and commercial opportunities.",
 };
-
-const VENUE = [
-  { icon: calendar, text: "16–18 November 2027" },
-  { icon: pin, text: "Sands Expo & Convention Centre, Singapore" },
-];
 
 /** Figma 869:402 (Why_Visit_Desktop). */
 export default function WhyVisitPage() {
@@ -35,21 +27,16 @@ export default function WhyVisitPage() {
           curveLeft={3.89}
           cta={
             <>
-              {/* Date & Venue (869:783): 24px icons, 12px gap, 18/23 semibold, rows 10px apart, 4px padding, 4px right of the title. */}
-              <ul className="flex flex-col gap-[10px] py-[4px] lg:ml-[4px]">
-                {VENUE.map((v) => (
-                  <li key={v.text} className="flex items-center gap-[12px]">
-                    <Image src={v.icon} alt="" className="shrink-0" />
-                    <span className="text-[17px] leading-[23px] font-semibold text-white md:text-[18px]">{v.text}</span>
-                  </li>
-                ))}
-              </ul>
+              <HeroVenue />
               <HeroCtas stayHref="/subscribe" className="mt-[24px] md:mt-[29px]" />
             </>
           }
         />
 
-        <Intro />
+        <Intro>
+          Fresh Food Expo APAC brings together suppliers, solution providers and industry professionals in one dedicated B2B platform – giving visitors direct
+          access to new products, partners and commercial opportunities.
+        </Intro>
         <Products />
         <Technologies />
         <Connections />

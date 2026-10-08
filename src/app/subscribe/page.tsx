@@ -28,12 +28,11 @@ export default function SubscribePage() {
             </>
           }
           img={hero}
-          // Fill 68.67% × 114.84% at (36.7%, −7.44%): the true ratio of the photo.
-          imgBox="lg:top-[-7.44%] lg:left-[36.7%] lg:h-[114.84%]! lg:w-[68.67%] lg:max-w-none"
+          // Figma 496:3169 fill: 63.35% × 143.09% at (36.67%, −21.54%), the true ratio of the photo.
+          imgBox="lg:top-[-21.54%] lg:left-[36.67%] lg:h-[143.09%]! lg:w-[63.35%] lg:max-w-none"
           date="16–18 November 2027"
         >
-          Subscribe to stay connected — be the first to know about new exhibitors, programme announcements and opportunities at Asia’s premier trade show
-          connecting the fresh food ecosystem across the source-to-market value chain.
+          Subscribe to stay connected
         </PageHero>
         <SubscribeSection />
       </main>

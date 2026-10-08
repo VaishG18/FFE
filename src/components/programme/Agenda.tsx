@@ -164,7 +164,7 @@ export default function Agenda() {
 
 function SessionCard({ s, saved, onSave, onOpen }: { s: Session; saved: boolean; onSave: () => void; onOpen: () => void }) {
   return (
-    <article className="lift group relative flex flex-col gap-[14px] rounded-[18px] bg-white px-[20px] py-[20px] drop-shadow-[0_12px_16px_rgb(3_41_26/0.1)] lg:flex-row lg:items-stretch lg:gap-0 lg:py-[22px] lg:pr-[28px] lg:pl-[24px]">
+    <article className="group relative flex flex-col gap-[14px] rounded-[18px] bg-white px-[20px] py-[20px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px] lg:flex-row lg:items-stretch lg:gap-0 lg:py-[22px] lg:pr-[28px] lg:pl-[24px]">
       <div className="flex items-start gap-[10px] pr-[36px] lg:w-[170px] lg:shrink-0 lg:pr-0">
         <Image src={clock} alt="" className="size-[18px] shrink-0" />
         <p className="flex flex-col gap-[2px] whitespace-nowrap">

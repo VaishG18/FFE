@@ -1,3 +1,4 @@
+// Phase 2: hidden from routing by the _ prefix. Rename the folder back to `programme` to publish /programme.
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import RevealObserver from "@/components/RevealObserver";

@@ -190,7 +190,6 @@ export function SessionModal({ session: s, prev, next, saved, onSave, onGo, onSp
             <div className="flex flex-col gap-[12px]">
               <h3 className="text-[17px] leading-[22px] font-semibold text-black">Session Details</h3>
               <Detail icon={tag} label="Track" value={s.track} />
-              <Detail icon={users} label="Format" value={s.type} />
               {s.audience && <Detail icon={users} label="Audience" value={s.audience} />}
             </div>
             <button

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import RevealObserver from "@/components/RevealObserver";
 import Footer from "@/components/home/Footer";
-import PageHero, { HeroCtas } from "@/components/PageHero";
+import PageHero, { HeroCtas, HeroVenue } from "@/components/PageHero";
+import { Intro } from "@/components/why/Sections";
 import JoinBanner from "@/components/home/JoinBanner";
 import RuleEyebrow from "@/components/story/RuleEyebrow";
 import SectorCard from "@/components/who/SectorCard";
@@ -32,26 +33,33 @@ export const metadata: Metadata = {
     "If your business plays a role in bringing fresh food from source to buyer, Fresh Food Expo APAC provides a dedicated platform to connect with buyers, partners and industry decision-makers across Asia Pacific.",
 };
 
-/** Figma 778:1240 (Who_Should_Exhibit_Desktop). Cards sit 24px apart (26.32 below the hero). */
+/** Figma 778:1240 (Who_Should_Exhibit_Desktop; hero 1053:242). Intro 42px under the hero, cards 24px apart. */
 export default function WhoShouldExhibitPage() {
   return (
     <>
       <Header />
       <main className="overflow-x-clip">
         <PageHero
-          size="who"
+          size="why"
           title="Who Should Exhibit"
           img={hero}
           imgBox="lg:top-[-54.32%] lg:left-[16.31%] lg:h-[208.36%]! lg:w-[83.72%]"
-          curveLeft={3.38}
-          stayHref="/subscribe"
-        >
-          If your business plays a role in bringing fresh food from source to buyer, <br className="max-lg:hidden" />
-          Fresh Food Expo APAC provides a dedicated platform to connect with buyers, partners and industry decision-makers across Asia Pacific.
-        </PageHero>
+          curveLeft={3.89}
+          cta={
+            <>
+              <HeroVenue />
+              <HeroCtas stayHref="/subscribe" className="mt-[24px] md:mt-[29px]" />
+            </>
+          }
+        />
+
+        <Intro>
+          If your business plays a role in bringing fresh food from source to buyer, Fresh Food Expo APAC provides a dedicated platform to connect with buyers,
+          partners and industry decision-makers across Asia Pacific.
+        </Intro>
 
         <SectorCard
-          mt="mt-[24px] lg:mt-[26.32px]"
+          mt="mt-[24px]"
           title={
             <>
               Fresh Food<span className="text-accent">.</span>

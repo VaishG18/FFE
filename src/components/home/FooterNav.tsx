@@ -7,26 +7,20 @@ import plus from "@/assets/icon-plus.png";
 // Figma 736:1519. `w` = desktop column width (flex-grow ratio; 0 = sized to content),
 // `max` = Figma text box width where links wrap, `gap` = phone bar→title gap.
 const COLS = [
-  { title: "About", w: 225, max: 178, gap: 7, links: ["Overview", "Our Story", "Fresh Food Ecosystem", "SIAW", "Supporting Organisations & Media Partners", "Contact Us"] },
-  { title: "Exhibit", w: 230, max: 190, gap: 8, links: ["Why Exhibit", "Who Should Exhibit", "Exhibitor Profile", "Sponsorship & Branding Opportunities", "Apply to Exhibit"] },
+  { title: "About", w: 225, max: 178, gap: 7, links: ["Overview", "Our Story", "Fresh Food Ecosystem", "SIAW", "Messe Berlin", "Contact Us"] },
+  { title: "Exhibit", w: 230, max: 190, gap: 8, links: ["Why Exhibit", "Who Should Exhibit", "Apply to Exhibit"] },
   { title: "Visit", w: 185, gap: 6, links: ["Why Visit", "Who Should Visit", "Plan Your Visit", "Register to Visit"] },
-  { title: "Programme", w: 236, gap: 7, links: ["Conference Programme", "Speakers", "Site Visits", "Hosted Buyers"] },
-  { title: "News & Media", w: 0, gap: 5, links: ["News & Press Release", "FAQs", "Subscribe Newsletter"] },
+  { title: "News & Media", w: 0, gap: 5, links: ["News & Press Release", "Subscribe Newsletter"] },
 ];
 
-// Built pages; everything else stays "#" until its page exists. Exhibit/Visit CTAs go where the header’s do.
+// Stage 1 pages only (Programme returns in phase 2).
 const HREF: Record<string, string> = {
   Overview: "/about",
   "Our Story": "/our-story",
   "Fresh Food Ecosystem": "/ecosystem",
   SIAW: "/siaw",
   "Contact Us": "/contact",
-  "Supporting Organisations & Media Partners": "/#partners",
-  "Exhibitor Profile": "/who-should-exhibit",
-  "Sponsorship & Branding Opportunities": "/contact#enquiry",
-  Speakers: "/programme",
-  "Site Visits": "/programme",
-  "Hosted Buyers": "/register-to-visit#hosted-buyers",
+  "Messe Berlin": "/messe-berlin",
   "Why Exhibit": "/why-exhibit",
   "Who Should Exhibit": "/who-should-exhibit",
   "Apply to Exhibit": "/apply-to-exhibit",
@@ -34,13 +28,12 @@ const HREF: Record<string, string> = {
   "Who Should Visit": "/who-should-visit",
   "Plan Your Visit": "/plan-your-visit",
   "Register to Visit": "/register-to-visit",
-  "Conference Programme": "/programme",
   "News & Press Release": "/news",
   "Subscribe Newsletter": "/subscribe",
 };
 
 // Phone row paddings between the accordion rules (first row is shorter).
-const ROW = ["pt-[11.5px] pb-[15px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[17px]"];
+const ROW = ["pt-[11.5px] pb-[15px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[16px]", "pt-[15px] pb-[17px]"];
 
 const PHONE = "(max-width: 767.98px)";
 

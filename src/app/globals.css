@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Phones held sideways: wide but very short. */
+@custom-variant landscape-phone (@media (orientation: landscape) and (max-height: 500px));
+
 /* ── Design tokens (values from Figma frame 359:26) ─────────────────────── */
 @theme inline {
   --color-page: #f4f8f4;

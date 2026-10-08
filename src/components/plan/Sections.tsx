@@ -101,7 +101,7 @@ const RESOURCES: Resource[] = [
     title: "Marina Bay Sands Privileges",
     text: "Access special promotions across world-renowned luxury brands, lifestyle stores and premium restaurants located within MBS.",
     cta: "Unlock Your Privileges",
-    href: "#",
+    href: "https://www.marinabaysands.com/shopping/guest-privileges.html",
     img: mbs,
     alt: "Marina Bay Sands and the ArtScience Museum at dusk",
     // Fill 140.67% × 132.93% at (−14.49%, −13.41%): the photo’s own ratio, zoomed in.
@@ -115,7 +115,7 @@ const RESOURCES: Resource[] = [
       </>
     ),
     cta: "Get Helpful Tips",
-    href: "#",
+    href: "https://www.visitsingapore.com/travel-tips/essential-travel-information/",
     img: tips,
     alt: "Supertree Grove at Gardens by the Bay at night",
     fit: { className: "size-full object-cover object-top" },
@@ -188,7 +188,7 @@ const HOTELS = [
     img: hotelMbs,
     alt: "Marina Bay Sands and the ArtScience Museum reflected in the bay at night",
   },
-  { title: "Central Business District", sub: "(In Marina Bay)", img: hotelCbd, alt: "Exhibition hall with green planted stands" },
+  { title: "Central Business District", sub: "(In Marina Bay)", img: hotelCbd, alt: "Singapore city skyline across Marina Bay at dusk" },
 ];
 
 /** Where to stay (793:4543): 560px copy + hotel cards (flex-1, 18px apart), 40px gap; x 78–1358 at 1440. */

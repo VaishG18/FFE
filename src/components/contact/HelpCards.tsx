@@ -43,7 +43,7 @@ export default function HelpCards() {
               <span className="flex size-[96px] shrink-0 items-center justify-center rounded-full bg-mint">
                 <Image src={c.icon} alt="" sizes="42px" className={c.tall ? "h-[43px] w-[42px]" : "size-[42px]"} />
               </span>
-              <h3 className="text-[20px] leading-[26px] font-semibold text-accent">{c.title}</h3>
+              <h3 className="text-[18px] leading-[24px] font-semibold text-accent">{c.title}</h3>
               <p className="text-[15px] leading-[22px] font-medium text-body">{c.desc}</p>
               <span className="h-[3px] w-[40px] shrink-0 rounded-[2px] bg-accent" aria-hidden />
             </article>

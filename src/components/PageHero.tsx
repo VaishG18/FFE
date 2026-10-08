@@ -6,6 +6,8 @@ import exhibitCurve from "@/assets/exhibit/hero-curve.svg";
 import registerCurve from "@/assets/register/hero-curve.svg";
 import chevronSmBrand from "@/assets/chevron-sm-brand.svg";
 import chevronSmWhite from "@/assets/chevron-sm-white.svg";
+import calendar from "@/assets/exhibit/icon-calendar.svg";
+import pin from "@/assets/exhibit/icon-pin.svg";
 import { Button, DateVenue, crop } from "./ui";
 
 const i = (n: number) => ({ "--i": n }) as CSSProperties;
@@ -29,20 +31,18 @@ type Props = {
   cta?: ReactNode;
   /**
    * "compact" = News 736:3042: 426px panel, content at (67, 77), wider gaps, 195×165 curve.
-   * "tall" = Subscribe 736:3301: two-line title, content at (69.5, 55), 194.6×165.4 curve.
+   * "tall" = Subscribe 736:3301 (panel 496:3169: 371px): two-line title, content at (69.5, 55), 194.6×165.4 curve.
    * "siaw" = SIAW 624:1751: 516px panel, content at (73.5, 88), one 596px fade, 18/23 copy.
-   * "eco" = Ecosystem 674:2726: 351px panel, content at (56, 64.37), 676/496px fades, 18/25 semibold copy, vector curve.
+   * "eco" = Ecosystem 674:2726: 351px panel, content at (56, 64.37), 676/496px fades, 18/25 medium copy, vector curve.
    * "story" = Our Story 786:3140: 342px panel, no eyebrow, title cap top 59, 1016/538px fades, eco copy + curve.
    * "exhibit" = Why Exhibit 786:3081: 380px panel, no eyebrow, 18/26 copy, date block + CTAs passed in `cta`.
-   * "who" = Who Should Exhibit 786:3189: 316px panel, no eyebrow, 15/23 copy, exhibit curve.
    * "apply" = Apply to Exhibit 786:3263: 246px panel (30px radius), three-line title only, exhibit curve.
-   * "visit" = Who Should Visit 786:3515: 365px panel (30px radius), no eyebrow, 18/26 copy, exhibit curve.
    * "plan" = Plan Your Visit 793:4215: 338px panel (30px radius), one 325px fade, one-line copy, date block + CTAs via `cta`.
    * "register" = Register as a Trade Visitor 793:4301: 404px panel (30px radius), title only; sub, date block + CTAs via `cta`; taller curve.
    * "why" = Why Visit 869:777: 316px panel (30px radius), title only; date block + CTAs via `cta`; exhibit curve.
    * "contact" = Contact Us 483:211: 298px panel, eyebrow + title only, image 78 curve at top 118.
    */
-  size?: "default" | "compact" | "tall" | "siaw" | "eco" | "story" | "exhibit" | "who" | "apply" | "visit" | "plan" | "register" | "why" | "contact";
+  size?: "default" | "compact" | "tall" | "siaw" | "eco" | "story" | "exhibit" | "apply" | "plan" | "register" | "why" | "contact";
 };
 
 type Size = { panel: string; curve: string; content: string; desc: string; date: string; ctas: string; title?: string; descType?: string; fades?: string[]; curveSrc?: StaticImageData };
@@ -54,7 +54,7 @@ const FADES = ["left-[16.7%] w-[38.57%]", "left-[36.63%] w-[38.57%]"];
 const SIZES: Record<NonNullable<Props["size"]>, Size> = {
   default: { panel: "lg:h-[501px]", curve: "bottom-0 h-[181px] w-[213px]", content: "lg:pt-[80px] lg:pl-[6.5px]", desc: "lg:mt-[31px]", date: "md:mt-[28px]", ctas: "md:mt-[34px]" },
   compact: { panel: "lg:h-[426px]", curve: "bottom-[5px] h-[165px] w-[195px]", content: "lg:pt-[77px] lg:pl-[12.5px]", desc: "lg:mt-[39px]", date: "md:mt-[28px]", ctas: "md:mt-[34px] lg:mt-[39.6px]" },
-  tall: { panel: "lg:h-[501px]", curve: "bottom-0 h-[165.352px] w-[194.586px]", content: "lg:pt-[55px] lg:pl-[15px]", desc: "lg:mt-[28px]", date: "md:mt-[28px] lg:mt-[34.6px]", ctas: "" },
+  tall: { panel: "lg:h-[371px]", curve: "bottom-0 h-[165.352px] w-[194.586px]", content: "lg:pt-[53px] lg:pl-[15px]", desc: "lg:mt-[20px]", date: "md:mt-[28px] lg:mt-[24px]", ctas: "" },
   // Copy is an untrimmed auto-layout text (top 248.94, 4×23px); CTA top 369.65.
   siaw: {
     panel: "lg:h-[516px]",
@@ -76,7 +76,7 @@ const SIZES: Record<NonNullable<Props["size"]>, Size> = {
     curveSrc: ecoCurve,
     content: "lg:pt-[64.37px] lg:pl-[1.52px]",
     title: "lg:mt-[30.86px]",
-    descType: "max-w-[625px] text-[17px] leading-[23px] font-semibold [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
+    descType: "max-w-[625px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
     desc: "lg:mt-[26px]",
     date: "",
     ctas: "md:mt-[30px]",
@@ -89,7 +89,7 @@ const SIZES: Record<NonNullable<Props["size"]>, Size> = {
     curveSrc: ecoCurve,
     content: "lg:pt-[59px] lg:pl-[0.51px]",
     title: "mt-0!",
-    descType: "max-w-[625px] text-[17px] leading-[23px] font-semibold [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
+    descType: "max-w-[625px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[25px] lg:ml-[4px]",
     desc: "lg:mt-[24px]",
     date: "",
     ctas: "md:mt-[28px]",
@@ -109,42 +109,16 @@ const SIZES: Record<NonNullable<Props["size"]>, Size> = {
     ctas: "md:mt-[22px]",
     fades: ["left-[16.42%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
   },
-  // Title cap top 59 at x 54.49; copy (3×23px) top 121, 4px right; CTAs 215. Curve at (3.38, 161).
-  who: {
-    panel: "lg:h-[316px]",
-    curve: "top-[161px] h-[157.316px] w-[196.841px]",
-    curveSrc: exhibitCurve,
-    content: "lg:pt-[59px]",
-    title: "mt-0!",
-    descType: "max-w-[555px] text-[15px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] lg:ml-[4px]",
-    desc: "lg:mt-[27px]",
-    date: "",
-    ctas: "md:mt-[25px]",
-    fades: ["left-[16.34%] w-[72.83%]", "left-[16.27%] w-[38.57%]"],
-  },
   // Title cap top 59 at x 67.5 (13px inside the content column). Curve at (3.39, 93), 4px past the bottom edge.
   apply: {
     panel: "lg:h-[246px] lg:rounded-[30px]!",
     curve: "top-[93px] h-[157.316px] w-[196.841px]",
     curveSrc: exhibitCurve,
     content: "lg:pt-[59px] lg:pl-[13px]",
-    title: "mt-0!",
+    title: "mt-0! lg:text-[45px]! lg:leading-[48px]!",
     desc: "",
     date: "",
     ctas: "",
-    fades: ["left-[16.34%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
-  },
-  // Title cap top 80 at x 54.5; copy (3×26px, untrimmed) top 138, 4px right; CTAs 245. Curve at (3.88, 209).
-  visit: {
-    panel: "lg:h-[365px] lg:rounded-[30px]!",
-    curve: "top-[209px] h-[157.316px] w-[196.841px]",
-    curveSrc: exhibitCurve,
-    content: "lg:pt-[80px]",
-    title: "mt-0!",
-    descType: "max-w-[620px] text-[17px] leading-[23px] font-medium [text-box:normal]! md:mt-[22px] md:text-[18px] md:leading-[26px] lg:ml-[4px]",
-    desc: "lg:mt-[23px]",
-    date: "",
-    ctas: "md:mt-[29px]",
     fades: ["left-[16.34%] w-[72.83%]", "left-[16.34%] w-[38.57%]"],
   },
   // Title cap top 54 at x 54 (0.5px left of the column); copy (1×26px) top 112; date block 156 (via `cta`), CTAs 251. Curve at (3.88, 174).
@@ -258,6 +232,25 @@ export default function PageHero({ eyebrow, title, children, img, imgBox, date, 
         </div>
       </div>
     </section>
+  );
+}
+
+const VENUE = [
+  { icon: calendar, text: "16–18 November 2027" },
+  { icon: pin, text: "Sands Expo & Convention Centre, Singapore" },
+];
+
+/** Date & Venue for `cta` heroes (786:3088 / 869:783 / 1053:249): 24px icons, 12px gap, 18/23 semibold, rows 10px apart, 4px padding, 4px right of the title. */
+export function HeroVenue() {
+  return (
+    <ul className="flex flex-col gap-[10px] py-[4px] lg:ml-[4px]">
+      {VENUE.map((v) => (
+        <li key={v.text} className="flex items-center gap-[12px]">
+          <Image src={v.icon} alt="" className="shrink-0" />
+          <span className="text-[17px] leading-[23px] font-semibold text-white md:text-[18px]">{v.text}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 

@@ -47,7 +47,7 @@ export function MesseAsia() {
           <div className="load-in" style={i(0)}>
             <RuleEyebrow>About us</RuleEyebrow>
           </div>
-          <h1 className="load-in font-display text-[38px] leading-[42px] font-semibold text-forest md:text-[52px] md:leading-[58px] lg:text-[66px] lg:leading-[70px]" style={i(1)}>
+          <h1 className="load-in font-display text-[38px] leading-[42px] font-semibold text-forest md:text-[52px] md:leading-[58px] lg:text-[56px] lg:leading-[60px]" style={i(1)}>
             Messe Berlin Asia Pacific
           </h1>
           <p className={`load-in ${BODY}`} style={i(2)}>

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import RevealObserver from "@/components/RevealObserver";
 import Footer from "@/components/home/Footer";
-import PageHero, { HeroCtas } from "@/components/PageHero";
+import PageHero, { HeroCtas, HeroVenue } from "@/components/PageHero";
+import { Intro } from "@/components/why/Sections";
 import JoinBanner from "@/components/home/JoinBanner";
 import RuleEyebrow from "@/components/story/RuleEyebrow";
 import VisitorGroups from "@/components/visit/VisitorGroups";
@@ -14,24 +15,31 @@ export const metadata: Metadata = {
     "Fresh Food Expo APAC is designed for buyers, sourcing professionals and industry decision-makers looking for fresh food products, technologies and logistics solutions from across Asia Pacific and global markets.",
 };
 
-/** Figma 781:2064 (Who_Should_Visit_Desktop). */
+/** Figma 781:2064 (Who_Should_Visit_Desktop; hero 1053:369). Intro 42px under the hero, cards 24px below it. */
 export default function WhoShouldVisitPage() {
   return (
     <>
       <Header />
       <main className="overflow-x-clip">
         <PageHero
-          size="visit"
+          size="why"
           title="Who Should Visit"
           img={hero}
-          // Figma fill is 81.25% × 176.9% (1.3% taller than the photo); kept at its true ratio, same width, left edge and vertical centre.
-          imgBox="lg:top-[-59.47%] lg:left-[18.76%] lg:h-[174.64%]! lg:w-[81.25%] lg:max-w-none"
-          curveLeft={3.88}
-          stayHref="/subscribe"
-        >
-          Fresh Food Expo APAC is designed for buyers, sourcing professionals and industry decision-makers looking for fresh food products, technologies
-          and logistics solutions from across Asia Pacific and global markets.
-        </PageHero>
+          // Figma 1053:371 fill is 81.25% × 176.9% (squashed to 0.88 of the photo); kept at its true ratio, same width, left edge and vertical centre.
+          imgBox="lg:top-[-73.02%] lg:left-[18.76%] lg:h-[201.76%]! lg:w-[81.25%] lg:max-w-none"
+          curveLeft={3.89}
+          cta={
+            <>
+              <HeroVenue />
+              <HeroCtas stayHref="/subscribe" className="mt-[24px] md:mt-[29px]" />
+            </>
+          }
+        />
+
+        <Intro>
+          Fresh Food Expo APAC is designed for buyers, sourcing professionals and industry decision-makers looking for fresh food products, technologies and
+          logistics solutions from across Asia Pacific and global markets.
+        </Intro>
 
         <VisitorGroups />
 

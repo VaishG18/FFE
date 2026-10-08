@@ -11,7 +11,7 @@ export default function StoryIntro() {
         <RuleEyebrow>Our story</RuleEyebrow>
         <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[36px] md:leading-[44px] lg:text-[38px] lg:leading-[46px]">
           The future of fresh food depends <br className="max-md:hidden" />
-          on a more <span className="text-accent">connected ecosystem.</span>
+          on a more connected ecosystem.
         </h2>
         <p className="text-[15px] leading-[24px] font-medium text-body">
           Across Asia Pacific, the fresh food industry is evolving as food security, sustainability, technology, supply chain resilience and cross-border

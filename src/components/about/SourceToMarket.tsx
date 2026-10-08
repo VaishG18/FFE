@@ -32,7 +32,7 @@ export default function SourceToMarket() {
       </div>
 
       <div className="relative flex justify-center px-[20px] pt-[36px] pb-[36px] md:px-8 lg:pt-[43px] lg:pb-[26px]" data-reveal>
-        <Pill href="/#ecosystem" className="bg-accent text-white">
+        <Pill href="/ecosystem" className="bg-accent text-white">
           Explore the Full Fresh Food Ecosystem
         </Pill>
       </div>

@@ -21,7 +21,7 @@ export default function SubscribeSection() {
     <section className="untrim mx-auto flex w-[min(1320px,100%-2*var(--gutter))] flex-col gap-[32px] pt-[40px] lg:flex-row lg:items-stretch">
       <div className="flex min-w-0 flex-col gap-[24px] lg:w-[48.5%] lg:shrink-0 xl:w-[640px]">
         <h2 className="font-display text-[30px] leading-[36px] font-semibold text-forest md:text-[36px] md:leading-[42px]" data-reveal>
-          Be the <span className="text-accent">first</span> to know about
+          Be the first to know about
         </h2>
 
         <ul className="grid grid-cols-2 gap-[14px] sm:grid-cols-4">

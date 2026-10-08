@@ -88,7 +88,11 @@ export default function CommunityForm() {
         <div className="flex min-w-0 flex-1 flex-col gap-[8px] text-[12px] leading-[17px] font-medium text-body">
           <p>
             You can unsubscribe from our marketing communications at any time. For more information on how we collect, use and protect your personal
-            data, please refer to our Privacy Policy.
+            data, please refer to our{" "}
+            <a href="https://www.messe-berlin.asia/en/additional-pages/privacy-policy" className="text-accent underline underline-offset-2 hover:text-forest">
+              Privacy Policy
+            </a>
+            .
           </p>
           <p>
             We use Mailchimp as our marketing platform. By clicking below to subscribe, you acknowledge that your information will be transferred to

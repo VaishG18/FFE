@@ -10,18 +10,10 @@ import menuIcon from "@/assets/icon-menu.png";
 import chevronContact from "@/assets/chevron-contact.svg";
 import chevronLang from "@/assets/chevron-lang.svg";
 import searchIcon from "@/assets/icon-search.png";
-import { Button, crop } from "./ui";
+import { Button, Pill, crop } from "./ui";
+import { NAV, type NavSection } from "./nav";
 
-// Absolute so the links work from every page; same-page hashes still just scroll.
-const NAV = [
-  { label: "About", href: "/about" },
-  { label: "Exhibit", href: "/why-exhibit" },
-  { label: "Visit", href: "/why-visit" },
-  { label: "Programme", href: "/programme" },
-  { label: "News & Media", href: "/news" },
-];
-
-const SITES = ["FFE MENA", "FFE Europe", "FFE China", "FFE India"];
+const SITE = "FFE MENA";
 const UTIL = [
   { label: "Newsletter", href: "/subscribe" },
   { label: "Press", href: "/news" },
@@ -29,45 +21,29 @@ const UTIL = [
 
 const Divider = () => <span className="h-[22px] w-px bg-white" aria-hidden />;
 
+const Caret = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 12 8" fill="none" aria-hidden className={`h-[7px] w-[11px] ${className}`}>
+    <path d="M1.5 1.5 6 6l4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const Arrow = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden className={`size-4 ${className}`}>
+    <path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 /**
  * Utility bar above the header (Figma 736:1498). Scrolls away; the header below stays sticky.
- * Below lg there is no design: the four regional sites collapse into an "FFE Network" dropdown,
- * language + search stay visible, and Newsletter / Press move into the mobile menu.
+ * Below lg language + search stay visible and Newsletter / Press move into the mobile menu.
  */
 function TopBar() {
-  const net = useRef<HTMLDetailsElement>(null);
-
-  useEffect(() => {
-    const close = (e: Event) => {
-      const d = net.current;
-      if (d?.open && (e instanceof KeyboardEvent ? e.key === "Escape" : !d.contains(e.target as Node))) d.open = false;
-    };
-    document.addEventListener("pointerdown", close);
-    document.addEventListener("keydown", close);
-    return () => {
-      document.removeEventListener("pointerdown", close);
-      document.removeEventListener("keydown", close);
-    };
-  }, []);
-
   return (
     <div className="bg-forest font-medium tracking-[0.02em] text-white">
       <div className="container-page flex h-[44px] items-center justify-between text-[14px] lg:hidden">
-        <details ref={net} className="group relative">
-          <summary className="flex h-[44px] cursor-pointer list-none items-center gap-[6px] uppercase [&::-webkit-details-marker]:hidden">
-            FFE Network
-            <Image src={chevronLang} alt="" className="rotate-180 transition-transform duration-(--dur-ui) group-open:rotate-0" />
-          </summary>
-          <ul className="absolute top-full left-[-12px] z-[60] min-w-[200px] rounded-b-[16px] bg-forest py-[6px] uppercase shadow-[0_16px_32px_-16px_rgb(0_0_0/0.5)]">
-            {SITES.map((l) => (
-              <li key={l}>
-                <a href="#" className="flex min-h-[44px] items-center px-[12px] transition-colors hover:bg-white/10">
-                  {l}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </details>
+        <a href="#" className="flex h-[44px] items-center uppercase">
+          {SITE}
+        </a>
         <div className="-mr-[12px] flex items-center">
           <a href="#" aria-label="Language: English" className="flex h-[44px] items-center gap-[5px] px-[8px] text-white/50 uppercase">
             EN
@@ -80,16 +56,9 @@ function TopBar() {
       </div>
 
       <div className="container-page hidden h-[49px] items-center justify-between text-[15px] lg:flex">
-        <nav aria-label="Fresh Food Expo network">
-          <ul className="flex items-center gap-[18px] uppercase">
-            {SITES.map((l, i) => (
-              <li key={l} className="flex items-center gap-[18px]">
-                {i > 0 && <Divider />}
-                <a href="#" className="footer-link hover:text-white/70">{l}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <a href="#" className="footer-link uppercase hover:text-white/70">
+          {SITE}
+        </a>
         <ul className="flex items-center gap-[18px]">
           {UTIL.map((l) => (
             <li key={l.label} className="flex items-center gap-[18px]">
@@ -116,10 +85,74 @@ function TopBar() {
   );
 }
 
+/** Desktop mega menu panel (800px, right-aligned under the nav): photo card on the left, section links + CTA on the right. */
+function MegaPanel({ s, i, on }: { s: NavSection; i: number; on: boolean }) {
+  return (
+    <div
+      id={`mega-${i}`}
+      inert={!on}
+      tabIndex={-1}
+      className={`absolute inset-x-0 top-full pt-2 font-sans text-[16px] font-normal tracking-normal normal-case outline-none transition-[opacity,transform] duration-(--dur-ui) ease-(--ease-out) ${
+        on ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
+      }`}
+    >
+      <div className="container-page flex justify-end">
+        <div className="grid w-[800px] grid-cols-[200px_1fr] gap-2 rounded-[24px] bg-white p-2 shadow-[0_32px_64px_-28px_rgb(2_93_3/0.4)] ring-1 ring-forest/5">
+          <Link href={s.href} tabIndex={-1} className="group relative flex min-h-[200px] flex-col justify-end overflow-hidden rounded-[18px] p-5 text-white">
+            <Image src={s.image} alt="" fill sizes="200px" className="zoom object-cover" />
+            <span className="absolute inset-0 bg-linear-to-t from-forest via-forest/70 to-brand/10" aria-hidden />
+            <span className="relative font-display text-[20px] leading-none font-semibold uppercase tracking-[0.02em]">{s.label}</span>
+            <span className="relative mt-2 text-[13px] leading-[1.4] text-white/85">{s.blurb}</span>
+          </Link>
+
+          <div className="flex flex-col px-2 pt-2 pb-3">
+            <ul className="grid grid-cols-2 gap-1">
+              {s.links.map((l) => (
+                <li key={l.label} className="[text-box:normal]!">
+                  <Link
+                    href={l.href}
+                    className="group/l flex items-center justify-between gap-3 rounded-[14px] px-4 py-[10px] transition-colors duration-(--dur-ui) hover:bg-mint focus-visible:bg-mint focus-visible:outline-none"
+                  >
+                    <span>
+                      <span className="block font-display text-[17px] font-medium text-ink transition-colors duration-(--dur-ui) group-hover/l:text-forest">
+                        {l.label}
+                      </span>
+                      <span className="mt-[2px] block text-[13px] text-body/80">{l.desc}</span>
+                    </span>
+                    <Arrow className="shrink-0 -translate-x-1 text-accent opacity-0 transition-[opacity,transform] duration-(--dur-ui) ease-(--ease-out) group-hover/l:translate-x-0 group-hover/l:opacity-100 group-focus-visible/l:translate-x-0 group-focus-visible/l:opacity-100" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-auto flex items-center justify-between gap-4 border-t border-forest/10 px-4 pt-3">
+              <p className="flex items-center gap-2 text-[13px] font-medium text-body/80 [text-box:normal]!">
+                <span className="size-[6px] rounded-full bg-accent" aria-hidden />
+                16–18 November 2027 · Sands Expo, Singapore
+              </p>
+              <Pill href={s.cta.href} className="bg-brand text-white md:h-[40px]! md:px-[18px]! md:text-[15px]!">
+                {s.cta.label}
+              </Pill>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  // Desktop mega menu: index of the open section. Hover opens after a short intent delay and
+  // closes with a grace period so the pointer can cross the gap into the panel.
+  const [menu, setMenu] = useState<number | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const carets = useRef<(HTMLButtonElement | null)[]>([]);
+  const showMenu = (i: number | null, delay: number) => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setMenu(i), delay);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -140,7 +173,18 @@ export default function Header() {
     };
   }, [open]);
 
-  const solid = scrolled || open;
+  useEffect(() => {
+    if (menu === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      carets.current[menu]?.focus();
+      setMenu(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menu]);
+
+  const solid = scrolled || open || menu !== null;
 
   return (
     <>
@@ -160,19 +204,43 @@ export default function Header() {
           </Link>
 
           <div className="hidden items-center gap-[35px] lg:mt-[18px] lg:flex">
-            <nav aria-label="Primary">
-              <ul className="flex items-center gap-[25px] font-display text-[19px] font-medium uppercase tracking-[0.02em] text-ink">
-                {NAV.map((n) => (
-                  <li key={n.label}>
-                    <Link
-                      href={n.href}
-                      aria-current={n.href === pathname ? "page" : undefined}
-                      className="nav-link trim block transition-colors duration-(--dur-ui) hover:text-forest"
+            <nav aria-label="Primary" onClick={(e) => (e.target as Element).closest("a") && setMenu(null)}>
+              <ul className="flex items-center gap-[22px] font-display text-[19px] font-medium uppercase tracking-[0.02em] text-ink">
+                {NAV.map((n, i) => {
+                  const on = menu === i;
+                  const here = n.links.some((l) => l.href === pathname);
+                  return (
+                    <li
+                      key={n.label}
+                      className="flex items-center gap-[6px]"
+                      onPointerEnter={(e) => e.pointerType === "mouse" && showMenu(i, menu === null ? 90 : 0)}
+                      onPointerLeave={(e) => e.pointerType === "mouse" && showMenu(null, 220)}
+                      onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && showMenu(null, 0)}
                     >
-                      {n.label}
-                    </Link>
-                  </li>
-                ))}
+                      <Link
+                        href={n.href}
+                        aria-current={here ? "page" : undefined}
+                        className={`nav-link trim block transition-colors duration-(--dur-ui) hover:text-forest ${on ? "text-forest" : ""}`}
+                      >
+                        {n.label}
+                      </Link>
+                      <button
+                        type="button"
+                        ref={(el) => {
+                          carets.current[i] = el;
+                        }}
+                        aria-expanded={on}
+                        aria-controls={`mega-${i}`}
+                        aria-label={`${n.label} menu`}
+                        onClick={() => showMenu(on ? null : i, 0)}
+                        className={`grid size-6 place-items-center rounded-full transition-colors duration-(--dur-ui) hover:text-forest focus-visible:outline-2 focus-visible:outline-forest ${on ? "text-forest" : "text-ink"}`}
+                      >
+                        <Caret className={`transition-transform duration-(--dur-ui) ease-(--ease-out) ${on ? "rotate-180" : ""}`} />
+                      </button>
+                      <MegaPanel s={n} i={i} on={on} />
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
             <Button href="/contact" chevron={chevronContact} w={162} h={47} pl={25} gap={13} className="bg-brand text-white">
@@ -233,7 +301,7 @@ export default function Header() {
                 <li key={n.label}>
                   <Link
                     href={n.href}
-                    aria-current={n.href === pathname ? "page" : undefined}
+                    aria-current={n.links.some((l) => l.href === pathname) ? "page" : undefined}
                     onClick={() => setOpen(false)}
                     className="flex min-h-12 items-center rounded-2xl px-4 transition-colors hover:bg-mint aria-[current]:text-forest"
                   >

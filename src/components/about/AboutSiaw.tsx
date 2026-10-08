@@ -1,25 +1,18 @@
-import Image from "next/image";
-import siaw from "@/assets/about/siaw.jpg";
+import SiawVideo from "./SiawVideo";
 import { Pill } from "../ui";
 
 // Long CTA on phones: full width, 20px sides, 13px top/bottom, balanced two lines.
 const MOB = "max-md:w-full max-md:px-[20px] max-md:py-[13px] max-md:leading-[22px] max-md:text-balance";
 
-/** Figma 736:2219: 560×428 photo, 72px gap, content column. */
+/** Figma 736:2219: 560px media (16:9 so the trailer’s text isn’t cropped), 72px gap, content column. */
 export default function AboutSiaw() {
   return (
     <section className="untrim container-narrow mt-[46px] flex flex-col gap-[32px] lg:flex-row lg:items-center lg:gap-[40px] xl:gap-[72px]">
       <div
-        className="relative aspect-[560/428] w-full overflow-hidden rounded-[24px] rounded-bl-none bg-[#d9d9d9] lg:w-[44%] lg:shrink-0 xl:w-[560px] lg:rounded-[30.474px] lg:rounded-bl-none"
+        className="relative aspect-video w-full overflow-hidden rounded-[24px] rounded-bl-none bg-[#d9d9d9] lg:w-[44%] lg:shrink-0 xl:w-[560px] lg:rounded-[30.474px] lg:rounded-bl-none"
         data-reveal
       >
-        <Image
-          src={siaw}
-          alt="Drought-cracked earth, a forest under smoke and a flooded village side by side"
-          placeholder="blur"
-          sizes="(min-width: 1024px) 560px, 100vw"
-          className="zoom absolute inset-0 size-full object-cover"
-        />
+        <SiawVideo />
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col items-start gap-[16px]" data-reveal style={{ "--i": 1 } as React.CSSProperties}>

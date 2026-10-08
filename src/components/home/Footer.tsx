@@ -1,13 +1,13 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
 import linkedin from "@/assets/social-linkedin.png";
-import instagram from "@/assets/social-instagram.png";
+import facebook from "@/assets/social-facebook.svg";
 import youtube from "@/assets/social-youtube.png";
 import FooterNav from "./FooterNav";
 
 const SOCIAL = [
   { label: "LinkedIn", icon: linkedin },
-  { label: "Instagram", icon: instagram },
+  { label: "Facebook", icon: facebook },
   { label: "YouTube", icon: youtube },
 ];
 
@@ -40,13 +40,8 @@ export default function Footer({ mt = "mt-[47px] md:mt-20 lg:mt-[96px]" }: { mt?
       {/* Phones: policies first, then copyright, left-aligned. Desktop (736:1581–736:1582): copyright left, policies right. */}
       <div className="text-lead mt-[30px] ml-[3px] flex flex-col items-start md:mt-[26px] md:ml-0 md:items-center md:gap-4 md:text-center lg:mt-[27.5px] lg:flex-row lg:justify-between lg:text-left">
         <p className="mt-[34px] md:mt-0">© 2027 Fresh Food Expo APAC. All rights reserved</p>
-        {/* Figma text box is 387px wide on mobile, a touch wider than the 385px column. */}
-        <p className="order-first -mr-[4px] -ml-px whitespace-pre-wrap md:order-none md:mx-0 xl:w-[412px]">
-          <a href="#" className="footer-link">Privacy Policy</a>
-          {"  |  "}
-          <a href="#" className="footer-link">Terms &amp; Conditions</a>
-          {" | "}
-          <a href="#" className="footer-link">Cookies Policy</a>
+        <p className="order-first md:order-none">
+          <a href="https://www.messe-berlin.asia/en/additional-pages/privacy-policy" className="footer-link">Privacy Policy</a>
         </p>
       </div>
     </footer>

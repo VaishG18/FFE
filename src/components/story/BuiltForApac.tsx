@@ -7,13 +7,13 @@ import RuleEyebrow from "./RuleEyebrow";
 
 type Item = { title: string; body: string; cta?: ReactNode; tight?: boolean };
 
-// Figma 777:600 only has copy for the first item; the other two reuse approved About-page copy (FRUIT LOGISTICA / Messe Berlin, Why different).
+// Figma 777:600 only has copy for the first item; the other two use client-supplied copy.
 const ITEMS: Item[] = [
   {
     title: "Part of Singapore International Agri-Food Week",
     body: "Fresh Food Expo APAC is part of Singapore International Agri-Food Week (SIAW), Singapore’s premier agri-food convention and flagship platform for advancing sustainable and resilient food systems in Asia.",
     cta: (
-      <Button href="/siaw" chevron={chevronSmWhite} w={135} h={40} pl={22} gap={9.39} fs={15} className="border border-accent bg-accent text-white">
+      <Button href="https://sginternationalagrifoodweek.com.sg/" chevron={chevronSmWhite} w={135} h={40} pl={22} gap={9.39} fs={15} className="border border-accent bg-accent text-white">
         SIAW 2027
       </Button>
     ),
@@ -22,11 +22,21 @@ const ITEMS: Item[] = [
   },
   {
     title: "Built on Global Industry Expertise",
-    body: "Fresh Food Expo APAC draws on the international fresh produce expertise behind FRUIT LOGISTICA in Berlin, the leading trade show for the global fresh produce business, and is organised by Messe Berlin, one of the world’s leading trade fair companies.",
+    body: "Fresh Food Expo APAC is brought to you by Messe Berlin, the organiser behind FRUIT LOGISTICA, the leading trade show for the global fresh produce business.",
+    cta: (
+      <Button href="/messe-berlin" chevron={chevronSmWhite} w={128} h={40} pl={22} gap={9.39} fs={15} className="border border-accent bg-accent text-white">
+        Organiser
+      </Button>
+    ),
   },
   {
     title: "Our Strategic Priorities",
-    body: "Focused on the opportunities and priorities shaping the region, including food security, supply chain resilience, sustainability, innovation and cross-border trade.",
+    body: "Fresh Food Expo APAC is built around strategic priorities that guide the development of the platform and its role within Asia Pacific’s fresh food ecosystem.",
+    cta: (
+      <Button href="/ecosystem" chevron={chevronSmWhite} w={215} h={40} pl={22} gap={9.39} fs={15} className="border border-accent bg-accent text-white">
+        Fresh Food Ecosystem
+      </Button>
+    ),
   },
 ];
 

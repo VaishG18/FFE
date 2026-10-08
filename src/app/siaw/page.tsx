@@ -40,10 +40,10 @@ export default function SiawPage() {
           cta={
             <>
               {/* Phones: full-width pill, two balanced lines, chevron after the last word. */}
-              <Pill href="#" className={`bg-white text-accent md:hidden ${MOB} max-[389px]:px-[16px]! max-[389px]:text-[15px]!`}>
+              <Pill href="#our-role" className={`bg-white text-accent md:hidden ${MOB} max-[389px]:px-[16px]! max-[389px]:text-[15px]!`}>
                 Discover Singapore International Agri{"\u2011"}Food Week
               </Pill>
-              <Button href="#" chevron={chevronAccent} w={497} h={52} pl={33} gap={9} className="bg-white text-accent max-md:hidden">
+              <Button href="#our-role" chevron={chevronAccent} w={497} h={52} pl={33} gap={9} className="bg-white text-accent max-md:hidden">
                 Discover Singapore International Agri-Food Week
               </Button>
             </>

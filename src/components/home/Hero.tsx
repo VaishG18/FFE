@@ -76,7 +76,7 @@ export default function Hero() {
             <Button href="/apply-to-exhibit" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} className="border border-white text-white hover:bg-white/10">
               Apply To Exhibit
             </Button>
-            <Button href="#newsletter" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} className="border border-white text-white hover:bg-white/10">
+            <Button href="/subscribe" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={14} fs={15} className="border border-white text-white hover:bg-white/10">
               Stay Connected
             </Button>
           </div>

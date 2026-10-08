@@ -22,14 +22,13 @@ const ROW = "mx-auto w-[min(1334px,100%-2*var(--gutter))]";
 const H2 = "text-[26px] leading-[32px] font-semibold text-forest md:text-[30px] md:leading-[34px]";
 const P = "text-[15px] leading-[24px] font-medium text-black md:text-[16px] md:leading-[25px]";
 
-/** Intro under the hero (869:782): 15/23 copy at x 72, 5px #28ae3d rule (968:1814) at x 59, 56px tall, 5px above the text. */
-export function Intro() {
+/** Intro under the hero (869:782, also Who Should Exhibit 1053:248): 15/23 copy at x 72, 5px #28ae3d rule (968:1814) at x 59, 56px tall, 5px above the text. */
+export function Intro({ children }: { children: ReactNode }) {
   return (
     <div className={`untrim mt-[32px] lg:mt-[42px] ${ROW}`} data-reveal>
       <p className="relative max-w-[1285px] pl-[19px] text-[15px] leading-[23px] font-medium text-body">
         <span aria-hidden className="absolute -top-[5px] -bottom-[5px] left-[6px] w-[5px] bg-accent" />
-        Fresh Food Expo APAC brings together suppliers, solution providers and industry professionals in one dedicated B2B platform – giving visitors direct
-        access to new products, partners and commercial opportunities.
+        {children}
       </p>
     </div>
   );

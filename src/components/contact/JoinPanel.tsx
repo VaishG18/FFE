@@ -17,14 +17,14 @@ export default function JoinPanel() {
             alt=""
             placeholder="blur"
             sizes="(min-width: 1024px) 780px, 100vw"
-            className="zoom absolute inset-0 size-full max-w-none object-cover lg:top-[-8.57%] lg:left-[51.36%] lg:h-[137.37%] lg:w-[57.75%]"
+            className="absolute inset-0 size-full max-w-none object-cover lg:top-[-8.57%] lg:left-[51.36%] lg:h-[137.37%] lg:w-[57.75%]"
           />
         </div>
 
         <div className="relative px-[24px] pt-[36px] pb-[32px] lg:max-w-[calc(51.36%-20px)] lg:pt-[58px] lg:pr-0 lg:pb-[80px] lg:pl-[55px]">
           <p className="text-[15.668px] leading-[19.846px] font-medium tracking-[0.02em] text-accent uppercase">Join the event</p>
           <h2 className="mt-[12.53px] font-display text-[28px] leading-[34px] font-semibold text-forest md:text-[35.514px] md:leading-[41.781px]">
-            Be part of <span className="text-accent">Fresh Food Expo</span> APAC.
+            Be part of <span className="text-accent">Fresh Food Expo APAC.</span>
           </h2>
           <p className="mt-[12.54px] max-w-[593px] text-[15.668px] leading-[21.935px] font-medium text-body">
             Connect with the businesses, technologies and decision-makers shaping the future of fresh food across Asia Pacific.

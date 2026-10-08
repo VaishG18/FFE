@@ -57,8 +57,8 @@ const CARDS: Card[] = [
         <Button href="/why-exhibit" chevron={chevronWhite} w={172} h={52} pl={27} gap={16.8} className="border-[1.5px] border-accent bg-accent text-white">
           Why Exhibit
         </Button>
-        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
-          Who Should Visit
+        <Button href="/who-should-exhibit" chevron={chevronWhite} w={240} h={52} pl={33} gap={15.49} className="border-[1.5px] border-white text-white hover:bg-white/10">
+          Who Should Exhibit
         </Button>
       </>
     ),

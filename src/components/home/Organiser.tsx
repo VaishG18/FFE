@@ -26,11 +26,12 @@ const STATS = [
   },
 ];
 
-type Show = { name: string; img: StaticImageData; logo: ReactNode; logoX: number };
+type Show = { name: string; href: string; img: StaticImageData; logo: ReactNode; logoX: number };
 
 const SHOWS: Show[] = [
   {
     name: "Grüne Woche",
+    href: "https://www.gruenewoche.de/en",
     img: showGW,
     logoX: 20,
     // Figma "Ebene_1" (359:416): mark + wordmark composed in a 94×30 box.
@@ -41,9 +42,10 @@ const SHOWS: Show[] = [
       </span>
     ),
   },
-  { name: "Fruit Logistica", img: showFL, logoX: 21, logo: <Image src={flLogo} alt="" /> },
+  { name: "Fruit Logistica", href: "https://www.fruitlogistica.com/en", img: showFL, logoX: 21, logo: <Image src={flLogo} alt="" /> },
   {
     name: "Asia Fruit Logistica",
+    href: "http://www.asiafruitlogistica.com/",
     img: showAFL,
     logoX: 14,
     // Mobile logo is 55×25 (318:2715) → 88.9×40.4 before the ×0.619 zoom.
@@ -51,6 +53,7 @@ const SHOWS: Show[] = [
   },
   {
     name: "Fruit Logistica Connect India",
+    href: "https://www.fruitlogisticaindia.com/",
     img: showFLI,
     logoX: 23,
     // Mobile logo is 39.5×21.7 (318:2703) → 63.8×35.1 before the ×0.619 zoom.
@@ -132,7 +135,7 @@ export function ShowCards({ className = "mt-[26px] ml-px md:mt-8 md:ml-0 lg:mt-[
         // Mobile cards (318:2615 etc.) are the desktop card at exactly ×0.619.
         <li key={s.name} className="[zoom:0.619] md:[zoom:1]" data-reveal style={{ "--i": idx } as CSSProperties}>
           <a
-            href="#"
+            href={s.href}
             aria-label={s.name}
             className="group block rounded-[18px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
           >

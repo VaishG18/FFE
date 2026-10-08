@@ -47,9 +47,9 @@ const CARDS: { title: string; desc: string; tags: string; img: ReactNode; pl: st
         <Button href="/why-exhibit" chevron={chevronWhite} w={172} h={52} pl={27} gap={10.14} m={{ w: 142, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-accent bg-accent text-white">
           Why Exhibit
         </Button>
-        {/* Label as in Figma (736:2463). */}
-        <Button href="/who-should-visit" chevron={chevronWhite} w={220} h={52} pl={33} gap={8.83} m={{ w: 179, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
-          Who Should Visit
+        {/* Figma 736:2463 says Who Should Visit; client asked for Who Should Exhibit on the exhibit card. */}
+        <Button href="/who-should-exhibit" chevron={chevronWhite} w={241} h={52} pl={33} gap={8.83} m={{ w: 197, h: 43, pl: 22, gap: 8, fs: 15, chev: 0.828 }} className="border-[1.5px] border-white text-white hover:bg-white/10">
+          Who Should Exhibit
         </Button>
       </>
     ),

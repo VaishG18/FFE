@@ -21,7 +21,7 @@ export default function SubscribeForm() {
   return (
     <>
       <h2 className="font-display text-[28px] leading-[34px] font-semibold text-forest md:text-[32px] md:leading-[38px]">
-        <span className="text-accent">Subscribe</span> to our updates
+        Subscribe to our updates
       </h2>
 
       {done ? (
