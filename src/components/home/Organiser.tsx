@@ -136,7 +136,9 @@ export function ShowCards({ className = "mt-[26px] ml-px md:mt-8 md:ml-0 lg:mt-[
         <li key={s.name} className="[zoom:0.619] md:[zoom:1]" data-reveal style={{ "--i": idx } as CSSProperties}>
           <a
             href={s.href}
-            aria-label={s.name}
+            target="_blank"
+            rel="noopener"
+            aria-label={`${s.name} (opens in a new tab)`}
             className="group block rounded-[18px] transition-transform duration-(--dur-ui) ease-(--ease-out) hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
           >
             <div className="relative aspect-[305/175] overflow-hidden rounded-[18px] bg-[#d9d9d9]">

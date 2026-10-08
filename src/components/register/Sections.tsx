@@ -96,8 +96,7 @@ export function AllAccess() {
                   <span className="text-body md:hidden">Price (SGD): </span>XXX
                 </td>
                 <td className={TD}>
-                  {/* TODO: link to visitor registration once it opens. */}
-                  <Pill href="#" className="bg-accent leading-[20px] text-white md:h-[43px] md:min-h-0 md:px-[22px] md:text-[15px]">
+                  <Pill href="/register-to-visit/form" className="bg-accent leading-[20px] text-white md:h-[43px] md:min-h-0 md:px-[22px] md:text-[15px]">
                     Register Now
                   </Pill>
                 </td>

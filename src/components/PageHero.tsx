@@ -255,10 +255,10 @@ export function HeroVenue() {
 }
 
 /** Register / Apply / Stay Connected: white 160/162/162×40 pills (hero, SIAW join banner). */
-export function HeroCtas({ stayHref, className = "", style }: { stayHref: string; className?: string; style?: CSSProperties }) {
+export function HeroCtas({ stayHref, registerHref = "/register-to-visit", className = "", style }: { stayHref: string; registerHref?: string; className?: string; style?: CSSProperties }) {
   return (
     <div className={`flex flex-col items-start gap-[11px] md:flex-row md:flex-wrap md:gap-[13px] ${className}`} style={style}>
-      <Button href="/register-to-visit" chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
+      <Button href={registerHref} chevron={chevronSmBrand} w={160} h={40} pl={19} gap={6} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 7, fs: 15 }} className="border border-white bg-white text-brand">
         Register to Visit
       </Button>
       <Button href="/apply-to-exhibit" chevron={chevronSmWhite} w={162} h={40} pl={19} gap={12} fs={15} m={{ w: 178, h: 43, pl: 25, gap: 9, fs: 15 }} className="border border-white text-white hover:bg-white/10">

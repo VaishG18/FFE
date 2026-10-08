@@ -49,7 +49,7 @@ export default function RegisterToVisitPage() {
                   </li>
                 ))}
               </ul>
-              <HeroCtas stayHref="/subscribe" className="mt-[24px] md:mt-[25.52px] lg:-ml-[0.5px]" />
+              <HeroCtas stayHref="/subscribe" registerHref="/register-to-visit/form" className="mt-[24px] md:mt-[25.52px] lg:-ml-[0.5px]" />
             </div>
           }
         />
