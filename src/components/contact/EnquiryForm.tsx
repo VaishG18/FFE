@@ -11,13 +11,21 @@ const Field = (p: { label: string; required?: boolean; className?: string; child
 
 const checkbox = "checkbox mt-0 size-[20px] rounded-[5px] border-[1.5px] border-[#a8a8a8] bg-white checked:border-accent checked:bg-accent";
 
-/** UI-only enquiry form (Figma 736:2774): native validation + success state, no submission. */
+// Bunny Edge Script (bunny/contact-form.ts) that emails the enquiry via ZeptoMail.
+const ENDPOINT = "https://ffe-contact.bunny.run";
+
+/** Enquiry form (Figma 736:2774): native validation, posts to the Bunny edge script, success state. */
 export default function EnquiryForm() {
   const [done, setDone] = useState(false);
+  const [state, setState] = useState<"idle" | "sending" | "error">("idle");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // TODO: wire to the enquiry inbox / CRM.
-    setDone(true);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (state === "sending") return;
+    setState("sending");
+    const res = await fetch(ENDPOINT, { method: "POST", body: new FormData(e.currentTarget) }).catch(() => null);
+    if (res?.ok) setDone(true);
+    else setState("error");
   };
 
   if (done) {
@@ -105,8 +113,17 @@ export default function EnquiryForm() {
         <Image src={captcha} alt="" sizes="429px" style={crop(131.94, 691.67, -15.45, -182.14)} />
       </span>
 
+      {/* Honeypot: hidden from people, filled by bots; the edge script drops those. */}
+      <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+
+      {state === "error" && (
+        <p role="alert" className="text-[14px] leading-[20px] font-medium text-[#c0392b]">
+          Sorry, your enquiry couldn’t be sent. Please try again in a moment.
+        </p>
+      )}
+
       <div className="pt-[8px]">
-        <Pill className="bg-accent text-white">Submit Enquiry</Pill>
+        <Pill className="bg-accent text-white">{state === "sending" ? "Sending…" : "Submit Enquiry"}</Pill>
       </div>
     </form>
   );
