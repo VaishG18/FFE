@@ -43,7 +43,8 @@ async function contact(request: Request, json: (status: number, body: object) =>
       from: { address: process.env.MAIL_FROM, name: "Fresh Food Expo APAC" },
       to: String(process.env.CONTACT_TO).split(",").map((address) => ({ email_address: { address: address.trim() } })),
       reply_to: [{ address: email, name }],
-      subject: `Website enquiry: ${name}${values.company ? `, ${values.company}` : ""}`,
+      // Visitor text in a header: collapse line breaks and cap the length.
+      subject: `Website enquiry: ${name}${values.company ? `, ${values.company}` : ""}`.replace(/\s+/g, " ").slice(0, 150),
       htmlbody: `<table style="font:14px/1.5 sans-serif">${rows}</table>`,
     }),
   });

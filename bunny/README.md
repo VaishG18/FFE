@@ -44,3 +44,17 @@ both sites serve a `robots.txt` with `Disallow: /`. Nothing is indexable until l
    Leave the preview's rule on.
 3. Add a real `robots.txt` / sitemap if wanted (`src/app/robots.ts`), then redeploy.
 4. Check https://freshfoodexpoasiapacific.com and the contact form.
+5. Remove `http://localhost:3000` and the preview host from the script's `ALLOWED_ORIGINS`.
+
+## Known risks
+
+- **Form spam.** The origin allowlist only stops other websites' browsers; scripts can fake the
+  header. Mitigated by the honeypot, field validation, and a per-IP request limit on the
+  `ffe-contact` pull zone (1/s, burst 5). If spam arrives, add a captcha that works in China
+  (not reCAPTCHA) or a Bunny Shield rate-limit rule.
+- **`ffe-contact.bunny.run` from China** is untested. If it's blocked, add a custom hostname
+  (e.g. `forms.freshfoodexpoasiapacific.com`) to the script's pull zone and update `ENDPOINT`.
+- **Bunny Sites is a preview CLI feature.** The CLI is pinned (0.19.0); underneath it's an ordinary
+  storage zone + pull zone, manageable from the dashboard if the CLI changes.
+- **Accidental `deploy:live` before sign-off** publishes the full site. Undo with
+  `sites deployments publish --previous --site ffe`; the noindex rule keeps it out of search meanwhile.
